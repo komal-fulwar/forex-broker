@@ -274,12 +274,7 @@ export const slides = [
           <li>6. Spicknall, K. E., &amp; Zirwas, M. J. (2009). Clubbing: an update on diagnosis, differential diagnosis, pathophysiology, and clinical relevance. <em>Journal of the American Academy of Dermatology</em>, 60(6), 1073–1082.</li>
           <li>7. Dickinson, C. J. (1993). The aetiology of clubbing and hypertrophic osteoarthropathy. <em>European Journal of Clinical Investigation</em>, 23(6), 330–338.</li>
           <li>8. Lovibond, J. L. (1938). Diagnosis of clubbed fingers. <em>The Lancet</em>, 231(5979), 363–364.</li>
-          <li>9. Callemeyn, J., Van Haecke, P., Peetermans, W. E., &amp; Blockmans, D. (2016). Clubbing and hypertrophic osteoarthropathy. <em>Clinical Rheumatology</em>, 35, 2575–2581.</li>
         </ol>
-
-        <p style={{ marginTop: 18, fontSize: 11.5, color: 'var(--text-muted)', fontStyle: 'italic' }}>
-          All content in this presentation has been paraphrased from established academic sources. No text has been copied verbatim.
-        </p>
       </>
     ),
   },
