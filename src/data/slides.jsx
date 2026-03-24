@@ -197,11 +197,11 @@ export const slides = [
 
         <div style={{ textAlign: 'center', marginTop: 24 }}>
           <img
-            src="/images/schamroth_test.png"
-            alt="Schamroth Window Test — Normal (negative) vs. Positive (clubbing present)"
+            src="/images/nail_clubbing_diagram.png"
+            alt="Normal nail vs Clubbed nail — Lovibond angle comparison"
             style={{ maxHeight: 220, borderRadius: 4, border: '1px solid var(--border)' }}
           />
-          <p className="image-caption">Schamroth Window Test — Normal (negative) vs. Positive (clubbing present)</p>
+          <p className="image-caption">Normal digit (Lovibond angle ~160°) versus clubbed digit (angle ≥ 180°)</p>
         </div>
       </>
     ),
