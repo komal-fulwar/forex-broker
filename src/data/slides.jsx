@@ -177,12 +177,23 @@ export const slides = [
           <div className="test-card">
             <h4>1. Schamroth Window Test</h4>
             <p>Place dorsal surfaces of opposite terminal phalanges together. Normally a diamond-shaped window is visible. In clubbing, this window is obliterated.</p>
+            <span className="note">Sensitivity: ~93% &nbsp;•&nbsp; Specificity: ~95% &nbsp;•&nbsp; Quick bedside screening tool</span>
           </div>
 
           <div className="test-card">
             <h4>2. Lovibond Angle / Profile Sign</h4>
             <p>The angle between the nail plate and the proximal nail fold (hyponychial angle) is measured. Normal: &lt; 180° (approximately 160°). Clubbing: ≥ 180°.</p>
+            <span className="note">Objective measurement &nbsp;•&nbsp; Can be quantified with a shadowgraph or digital photography</span>
           </div>
+        </div>
+
+        <div style={{ textAlign: 'center', marginTop: 24 }}>
+          <img
+            src="/images/nail_clubbing_diagram.png"
+            alt="Normal nail vs Clubbed nail — anatomical cross-section"
+            style={{ maxHeight: 200, borderRadius: 4, border: '1px solid var(--border)' }}
+          />
+          <p className="image-caption">Normal digit (Lovibond angle ~160°) versus clubbed digit (angle ≥ 180°)</p>
         </div>
       </>
     ),
@@ -232,7 +243,56 @@ export const slides = [
     ),
   },
 
-  // ── 8. REFERENCES ──
+  // ── 8. PATIENT EDUCATION ──
+  {
+    type: 'content',
+    heading: 'Patient Education',
+    notes: 'Patient education is crucial for managing conditions associated with digital clubbing. Patients should understand the significance of clubbing as a systemic sign and be empowered with self-monitoring strategies.',
+    content: (
+      <>
+        <div className="definition-card">
+          Educating patients about the significance of nail clubbing empowers them to participate actively in their own health monitoring and facilitates early detection of disease progression.
+        </div>
+
+        <div className="card-grid card-grid--3" style={{ marginTop: 20 }}>
+          <div className="card">
+            <div className="card-head">Understanding the Sign</div>
+            <div className="card-body">
+              <ul className="bullets">
+                <li>Explain the significance of clubbing as a systemic sign</li>
+                <li>Educate on the association with cardiopulmonary disease</li>
+                <li>Emphasise the importance of regular medical follow-up</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-head">Self-Monitoring</div>
+            <div className="card-body">
+              <ul className="bullets">
+                <li>Teach self-monitoring of oxygen saturation levels</li>
+                <li>Maintain symptom diaries (breathlessness, fatigue)</li>
+                <li>Recognise signs of disease progression</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-head">Lifestyle & Adherence</div>
+            <div className="card-body">
+              <ul className="bullets">
+                <li>Motivate adherence to pulmonary rehab programmes</li>
+                <li>Encourage smoking cessation in relevant cases</li>
+                <li>Promote regular exercise within prescribed limits</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </>
+    ),
+  },
+
+  // ── 9. REFERENCES ──
   {
     type: 'content',
     heading: 'References',
