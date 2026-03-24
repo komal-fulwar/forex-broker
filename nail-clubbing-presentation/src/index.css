@@ -1,0 +1,27 @@
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg: #FFFFFF;
+  --bg-alt: #F8F9FA;
+  --text: #1a1a2e;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+  --accent: #2C5F6E;
+  --border: #E5E7EB;
+  --card-bg: #FFFFFF;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+html, body, #root {
+  font-family: var(--font);
+  background: var(--bg-alt);
+  color: var(--text);
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
