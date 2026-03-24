@@ -94,13 +94,13 @@ export const slides = [
             <div className="card-body">
               <ul className="bullets">
                 <li>Only <strong>one finger</strong> involved</li>
-                <li>👉 Suggests <strong>local pathology</strong></li>
+                <li>Suggests <strong>local pathology</strong></li>
               </ul>
               <div className="section-title" style={{ marginTop: 10 }}>Causes</div>
               <ul className="bullets">
                 <li>Trauma</li>
                 <li>Infection</li>
-                <li>Tumors (e.g., glomus tumor)</li>
+
               </ul>
             </div>
           </div>
@@ -110,13 +110,13 @@ export const slides = [
             <div className="card-body">
               <ul className="bullets">
                 <li><strong>One hand</strong> involved</li>
-                <li>👉 Usually due to <strong>vascular or neurological causes</strong></li>
+                <li>Usually due to <strong>vascular or neurological causes</strong></li>
               </ul>
               <div className="section-title" style={{ marginTop: 10 }}>Causes</div>
               <ul className="bullets">
                 <li>Arteriovenous fistula (AV fistula)</li>
                 <li>Nerve injury</li>
-                <li>Hemiplegia</li>
+
               </ul>
             </div>
           </div>
@@ -126,13 +126,13 @@ export const slides = [
             <div className="card-body">
               <ul className="bullets">
                 <li><strong>Both hands</strong> involved</li>
-                <li>👉 Indicates <strong>systemic disease</strong></li>
+                <li>Indicates <strong>systemic disease</strong></li>
               </ul>
               <div className="section-title" style={{ marginTop: 10 }}>Common Causes</div>
               <ul className="bullets">
                 <li><strong>Lung diseases:</strong> Lung cancer, Bronchiectasis, Lung abscess</li>
                 <li><strong>Heart diseases:</strong> Cyanotic congenital heart disease</li>
-                <li><strong>GIT / Liver:</strong> Cirrhosis, Inflammatory bowel disease</li>
+
               </ul>
             </div>
           </div>
