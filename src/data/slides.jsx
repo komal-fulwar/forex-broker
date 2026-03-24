@@ -284,9 +284,5 @@ export const slides = [
     ),
   },
 
-  // ── 9. THANK YOU ──
-  {
-    type: 'thankyou',
-    notes: 'Thank you for your attention. I am happy to take any questions or engage in discussion.',
-  },
+
 ]
