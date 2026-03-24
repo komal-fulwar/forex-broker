@@ -25,8 +25,7 @@ function ThankYouSlide({ data, index, total }) {
       <div className="title-line title-line--top" />
       <h2>Thank You</h2>
       <div className="title-divider" />
-      <p className="subtitle">Questions &amp; Discussion</p>
-      <p className="contact">[Your Name] &nbsp;•&nbsp; [Email]</p>
+
       <div className="title-line title-line--bottom" />
       <span className="slide-number">{index + 1} / {total}</span>
     </div>
