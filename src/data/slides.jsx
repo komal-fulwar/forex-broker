@@ -13,35 +13,7 @@ export const slides = [
     notes: 'Welcome everyone. Today I will present on Nail Clubbing — covering its definition, pathophysiological mechanisms, classification, grading, clinical assessment methods, and its significance in cardiopulmonary evaluation.',
   },
 
-  // ── 2. INTRODUCTION ──
-  {
-    type: 'content',
-    heading: 'Introduction',
-    notes: 'Digital clubbing is a clinically relevant physical examination finding that may indicate serious underlying cardiopulmonary, gastrointestinal, or systemic pathology. It remains one of the most important bedside diagnostic signs.',
-    content: (
-      <>
-        <div className="definition-card">
-          Digital clubbing is a physical examination finding characterised by selective bulbous enlargement of the distal segment of a digit, owing to proliferation of connective tissue between the nail matrix and the distal phalanx.
-        </div>
 
-        <div className="section-title">Clinical Importance</div>
-        <ul className="bullets">
-          <li>Functions as a non-invasive clinical marker for underlying systemic disease</li>
-          <li>Strongly correlated with chronic cardiopulmonary, gastrointestinal, and hepatobiliary pathology</li>
-          <li>Frequently the earliest recognisable sign prompting further diagnostic evaluation</li>
-          <li>Identification during physical examination may facilitate timely referral and intervention</li>
-          <li>Applicable across multiple clinical disciplines including internal medicine, pulmonology, and cardiology</li>
-        </ul>
-
-        <div style={{ marginTop: 18 }}>
-          <div className="section-title">Nomenclature</div>
-          <p style={{ fontSize: 13.5, color: 'var(--text-secondary)' }}>
-            Watch-glass nails &nbsp;•&nbsp; Drumstick fingers
-          </p>
-        </div>
-      </>
-    ),
-  },
 
   // ── 3. DEFINITION ──
   {
@@ -51,7 +23,7 @@ export const slides = [
     content: (
       <>
         <div className="definition-card">
-          <strong>Digital clubbing</strong> is defined as a selective, bulbous, fusiform enlargement of the soft tissue of the terminal phalanx, resulting in obliteration of the normal angle between the nail plate and the proximal nail fold (Lovibond angle). It reflects underlying vascular connective tissue proliferation in the nail bed and periungual region.
+          Digital clubbing is a physical examination finding characterised by selective bulbous enlargement of the distal segment of a digit, owing to proliferation of connective tissue between the nail matrix and the distal phalanx.
         </div>
 
         <div className="card-grid card-grid--2" style={{ marginTop: 20 }}>
