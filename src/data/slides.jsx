@@ -233,7 +233,7 @@ export const slides = [
                 <li>When opposing phalanges are placed together, the normal diamond-shaped window is <strong>ABSENT</strong> (obliterated).</li>
                 <li>This occurs because: the Lovibond angle ≥ 180° → the nail-fold areas are flush against each other → no gap remains.</li>
                 <li><strong>Interpretation:</strong> Window present → No clubbing (negative). Window absent → Clubbing present (positive).</li>
-                <li><strong>Limitation:</strong> Less reliable in early/grade 1 clubbing; combine with phalangeal depth ratio for better accuracy.</li>
+
               </ul>
             </div>
           </div>
