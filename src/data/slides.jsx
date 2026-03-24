@@ -33,11 +33,11 @@ export const slides = [
 
         <div style={{ textAlign: 'center', marginTop: 20 }}>
           <img
-            src="/images/nail_clubbing_diagram.png"
-            alt="Normal nail vs Clubbed nail — anatomical comparison"
+            src="/images/clubbing_intro.png"
+            alt="Clubbing: Common Symptoms — bulging fingertips, downward curved nails, soft nail beds"
             style={{ maxHeight: 200, borderRadius: 4, border: '1px solid var(--border)' }}
           />
-          <p className="image-caption">Normal digit vs. Clubbed digit</p>
+          <p className="image-caption">Clubbing: Common Symptoms</p>
         </div>
       </>
     ),
@@ -195,14 +195,6 @@ export const slides = [
           </div>
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: 24 }}>
-          <img
-            src="/images/nail_clubbing_diagram.png"
-            alt="Normal nail vs Clubbed nail — anatomical cross-section"
-            style={{ maxHeight: 200, borderRadius: 4, border: '1px solid var(--border)' }}
-          />
-          <p className="image-caption">Normal digit (Lovibond angle ~160°) versus clubbed digit (angle ≥ 180°)</p>
-        </div>
       </>
     ),
   },
