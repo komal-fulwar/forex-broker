@@ -146,7 +146,7 @@ export const slides = [
               </ul>
               <div className="section-title" style={{ marginTop: 10 }}>Classic Cause</div>
               <ul className="bullets">
-                <li><strong>Patent Ductus Arteriosus (PDA)</strong> with Eisenmenger syndrome</li>
+                <li><strong>Patent Ductus Arteriosus (PDA)</strong> </li>
               </ul>
             </div>
           </div>
