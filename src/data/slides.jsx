@@ -185,13 +185,13 @@ export const slides = [
           <div className="test-card">
             <h4>1. Schamroth Window Test</h4>
             <p>Place dorsal surfaces of opposite terminal phalanges together. Normally a diamond-shaped window is visible. In clubbing, this window is obliterated.</p>
-            <span className="note">Sensitivity: ~93% &nbsp;•&nbsp; Specificity: ~95% &nbsp;•&nbsp; Quick bedside screening tool</span>
+
           </div>
 
           <div className="test-card">
             <h4>2. Lovibond Angle / Profile Sign</h4>
             <p>The angle between the nail plate and the proximal nail fold (hyponychial angle) is measured. Normal: &lt; 180° (approximately 160°). Clubbing: ≥ 180°.</p>
-            <span className="note">Objective measurement &nbsp;•&nbsp; Can be quantified with a shadowgraph or digital photography</span>
+
           </div>
         </div>
 
