@@ -17,11 +17,11 @@ export const slides = [
   {
     type: 'content',
     heading: 'Introduction',
-    notes: 'Digital clubbing is among the earliest documented physical examination findings, dating back to Hippocrates. Despite its antiquity, it remains a clinically relevant sign that may indicate serious underlying cardiopulmonary, gastrointestinal, or systemic pathology.',
+    notes: 'Digital clubbing is a clinically relevant physical examination finding that may indicate serious underlying cardiopulmonary, gastrointestinal, or systemic pathology. It remains one of the most important bedside diagnostic signs.',
     content: (
       <>
         <div className="definition-card">
-          Digital clubbing is a physical examination finding characterised by selective bulbous enlargement of the distal segment of a digit, owing to proliferation of connective tissue between the nail matrix and the distal phalanx. First documented by <strong>Hippocrates (~400 BCE)</strong> in patients with thoracic empyema, it is historically referred to as <em>"Hippocratic fingers."</em>
+          Digital clubbing is a physical examination finding characterised by selective bulbous enlargement of the distal segment of a digit, owing to proliferation of connective tissue between the nail matrix and the distal phalanx.
         </div>
 
         <div className="section-title">Clinical Importance</div>
@@ -36,14 +36,14 @@ export const slides = [
         <div style={{ marginTop: 18 }}>
           <div className="section-title">Nomenclature</div>
           <p style={{ fontSize: 13.5, color: 'var(--text-secondary)' }}>
-            Hippocratic fingers &nbsp;•&nbsp; Watch-glass nails &nbsp;•&nbsp; Drumstick fingers
+            Watch-glass nails &nbsp;•&nbsp; Drumstick fingers
           </p>
         </div>
       </>
     ),
   },
 
-  // ── 3. DEFINITION (no image per user feedback) ──
+  // ── 3. DEFINITION ──
   {
     type: 'content',
     heading: 'Definition of Nail Clubbing',
@@ -69,7 +69,6 @@ export const slides = [
               <li><strong>Lovibond angle:</strong> Normal ≈ 160° → obliterated to ≥ 180° in clubbing</li>
               <li><strong>Phalangeal depth ratio:</strong> DPD ÷ IPD ratio exceeds 1.0 (normal &lt; 1.0) — most objective measure</li>
               <li><strong>Schamroth sign:</strong> Loss of the diamond-shaped window when opposing nails dorsum-to-dorsum</li>
-              <li><strong>Laterality:</strong> May be unilateral or bilateral; congenital or acquired</li>
             </ul>
           </div>
         </div>
@@ -81,17 +80,17 @@ export const slides = [
   {
     type: 'content',
     heading: 'Pathophysiology & Mechanism',
-    notes: 'Three principal theories explain clubbing. The VEGF-hypoxia theory proposes chronic hypoxia stimulates vascular endothelial growth factor release. The megakaryocyte-platelet bypass theory suggests that megakaryocyte fragments bypass the pulmonary capillary bed in right-to-left shunts, lodging in digital vasculature and releasing PDGF and VEGF. Neural and genetic factors including HPGD mutations also contribute.',
+    notes: 'Two principal theories explain clubbing. The VEGF-hypoxia theory proposes chronic hypoxia stimulates Vascular Endothelial Growth Factor release. The megakaryocyte-platelet bypass theory suggests that megakaryocyte fragments bypass the pulmonary capillary bed in right-to-left shunts, lodging in digital vasculature and releasing PDGF and VEGF.',
     content: (
       <>
-        <p className="intro-text">The precise pathogenesis remains under investigation. Three principal mechanistic theories are recognised in current literature:</p>
+        <p className="intro-text">The precise pathogenesis remains under investigation. Two principal mechanistic theories are recognised in current literature:</p>
 
-        <div className="card-grid card-grid--3">
+        <div className="card-grid card-grid--2">
           <div className="card">
-            <div className="card-head">VEGF / Hypoxia Theory</div>
+            <div className="card-head">VEGF (Vascular Endothelial Growth Factor) / Hypoxia Theory</div>
             <div className="card-body">
               <ul className="bullets">
-                <li>Chronic tissue hypoxia upregulates vascular endothelial growth factor (VEGF)</li>
+                <li>Chronic tissue hypoxia upregulates <strong>Vascular Endothelial Growth Factor (VEGF)</strong></li>
                 <li>VEGF promotes angiogenesis and increases vascular permeability in digital tissue</li>
                 <li>Resultant connective tissue hyperplasia in the periungual region</li>
                 <li>Soft-tissue oedema and vascular proliferation produce fingertip enlargement</li>
@@ -100,25 +99,13 @@ export const slides = [
           </div>
 
           <div className="card">
-            <div className="card-head">Megakaryocyte / Platelet Bypass</div>
+            <div className="card-head">Megakaryocyte / Platelet Bypass Theory</div>
             <div className="card-body">
               <ul className="bullets">
                 <li>Megakaryocytes normally fragment into platelets within the pulmonary capillary bed</li>
                 <li>In right-to-left shunts or pulmonary AV malformations → fragments bypass the lungs</li>
                 <li>Intact fragments lodge in distal digital capillaries</li>
-                <li>Release platelet-derived growth factor (PDGF) and VEGF → local tissue proliferation</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-head">Neural & Genetic Factors</div>
-            <div className="card-body">
-              <ul className="bullets">
-                <li>Vagal-mediated mechanism — clubbing may resolve following vagotomy</li>
-                <li>Prostaglandin E₂ (PGE₂) overproduction implicated in hypertrophic osteoarthropathy (HOA)</li>
-                <li>HPGD gene mutation identified in hereditary forms (primary pachydermoperiostosis)</li>
-                <li>Unilateral clubbing suggests local vascular aetiology rather than systemic process</li>
+                <li>Release <strong>Platelet-Derived Growth Factor (PDGF)</strong> and <strong>VEGF</strong> → local tissue proliferation</li>
               </ul>
             </div>
           </div>
@@ -131,61 +118,68 @@ export const slides = [
   {
     type: 'content',
     heading: 'Types & Causes of Clubbing',
-    notes: 'Clubbing is classified as acquired (most common), hereditary/idiopathic, or unilateral. Acquired clubbing is secondary to underlying systemic disease. Pulmonary causes predominate and include bronchogenic carcinoma, bronchiectasis, cystic fibrosis, and interstitial lung disease. Cardiac causes include cyanotic congenital heart disease and subacute bacterial endocarditis.',
+    notes: 'Clubbing is classified into four types based on the distribution of affected digits. Unidigital clubbing involves a single finger and suggests local pathology. Unilateral clubbing involves one hand and is usually due to vascular or neurological causes. Bilateral clubbing indicates systemic disease. Differential clubbing affects only the toes with normal upper limbs, classically seen in PDA with Eisenmenger syndrome.',
     content: (
       <>
-        <div className="type-row">
-          <div className="type-badge">
-            <h4>Acquired (Secondary)</h4>
-            <p>Most prevalent form — secondary to underlying cardiopulmonary, GI, or systemic disease</p>
-          </div>
-          <div className="type-badge">
-            <h4>Hereditary / Idiopathic</h4>
-            <p>Primary clubbing without identifiable underlying disease (pachydermoperiostosis, familial clubbing)</p>
-          </div>
-          <div className="type-badge">
-            <h4>Unilateral</h4>
-            <p>Indicates local vascular pathology (arteriovenous fistula, Pancoast tumour, subclavian aneurysm)</p>
-          </div>
-        </div>
-
-        <div className="card-grid card-grid--3">
+        <div className="card-grid card-grid--2">
           <div className="card">
-            <div className="card-head">Respiratory</div>
+            <div className="card-head">1. Unidigital Clubbing</div>
             <div className="card-body">
               <ul className="bullets">
-                <li>Bronchogenic carcinoma</li>
-                <li>Bronchiectasis</li>
-                <li>Cystic fibrosis</li>
-                <li>Idiopathic pulmonary fibrosis (IPF)</li>
-                <li>Lung abscess / empyema</li>
-                <li>Mesothelioma</li>
-                <li>Pulmonary arteriovenous malformations</li>
+                <li>Only <strong>one finger</strong> involved</li>
+                <li>👉 Suggests <strong>local pathology</strong></li>
+              </ul>
+              <div className="section-title" style={{ marginTop: 10 }}>Causes</div>
+              <ul className="bullets">
+                <li>Trauma</li>
+                <li>Infection</li>
+                <li>Tumors (e.g., glomus tumor)</li>
               </ul>
             </div>
           </div>
 
           <div className="card">
-            <div className="card-head">Cardiovascular</div>
+            <div className="card-head">2. Unilateral Clubbing</div>
             <div className="card-body">
               <ul className="bullets">
-                <li>Cyanotic congenital heart disease</li>
-                <li>Subacute bacterial endocarditis</li>
-                <li>Atrial myxoma</li>
-                <li>Arteriovenous fistulae</li>
+                <li><strong>One hand</strong> involved</li>
+                <li>👉 Usually due to <strong>vascular or neurological causes</strong></li>
+              </ul>
+              <div className="section-title" style={{ marginTop: 10 }}>Causes</div>
+              <ul className="bullets">
+                <li>Arteriovenous fistula (AV fistula)</li>
+                <li>Nerve injury</li>
+                <li>Hemiplegia</li>
               </ul>
             </div>
           </div>
 
           <div className="card">
-            <div className="card-head">GI / Hepatobiliary & Other</div>
+            <div className="card-head">3. Bilateral (Generalised) Clubbing</div>
             <div className="card-body">
               <ul className="bullets">
-                <li>Inflammatory bowel disease (Crohn's, UC)</li>
-                <li>Hepatic cirrhosis</li>
-                <li>Coeliac disease</li>
-                <li>Graves' disease (thyroid acropachy)</li>
-                <li>Chronic infections (TB, HIV)</li>
+                <li><strong>Both hands</strong> involved</li>
+                <li>👉 Indicates <strong>systemic disease</strong></li>
+              </ul>
+              <div className="section-title" style={{ marginTop: 10 }}>Common Causes</div>
+              <ul className="bullets">
+                <li><strong>Lung diseases:</strong> Lung cancer, Bronchiectasis, Lung abscess</li>
+                <li><strong>Heart diseases:</strong> Cyanotic congenital heart disease</li>
+                <li><strong>GIT / Liver:</strong> Cirrhosis, Inflammatory bowel disease</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-head">4. Differential Clubbing</div>
+            <div className="card-body">
+              <ul className="bullets">
+                <li>Clubbing in <strong>lower limbs only</strong> (toes)</li>
+                <li>Upper limbs remain <strong>normal</strong></li>
+              </ul>
+              <div className="section-title" style={{ marginTop: 10 }}>Classic Cause</div>
+              <ul className="bullets">
+                <li><strong>Patent Ductus Arteriosus (PDA)</strong> with Eisenmenger syndrome</li>
               </ul>
             </div>
           </div>
@@ -194,7 +188,7 @@ export const slides = [
     ),
   },
 
-  // ── 6. KEY FEATURES — image-focused per user feedback ──
+  // ── 6. KEY FEATURES ──
   {
     type: 'content',
     heading: 'Key Features of Nail Clubbing',
@@ -282,7 +276,7 @@ export const slides = [
   {
     type: 'content',
     heading: 'Clinical Tests for Nail Clubbing',
-    notes: 'Four clinical assessment methods are routinely employed. The Schamroth window test is the most widely used bedside screening tool. The Lovibond angle provides an objective angular measurement. The phalangeal depth ratio is the most reproducible metric. Nail bed fluctuation, though subjective, detects the earliest stage of clubbing.',
+    notes: 'Two primary clinical assessment methods are routinely employed. The Schamroth window test is the most widely used bedside screening tool with high sensitivity and specificity. The Lovibond angle provides an objective angular measurement that can be quantified via digital photography.',
     content: (
       <>
         <div className="card-grid card-grid--2">
@@ -297,25 +291,13 @@ export const slides = [
             <p>Assess the angle between the nail plate and the proximal nail fold in lateral profile. Normal &lt; 180° (~160°). An angle ≥ 180° is diagnostic of clubbing.</p>
             <span className="note">Objective angular measurement &nbsp;•&nbsp; Quantifiable via digital photography</span>
           </div>
-
-          <div className="test-card">
-            <h4>3. Phalangeal Depth Ratio</h4>
-            <p>Calculate the ratio of distal phalangeal depth (DPD) to interphalangeal depth (IPD). Normal &lt; 1.0. A ratio ≥ 1.0 confirms clubbing.</p>
-            <span className="note">Most objective and reproducible metric</span>
-          </div>
-
-          <div className="test-card">
-            <h4>4. Nail Bed Fluctuation</h4>
-            <p>Apply gentle pressure on the nail plate near the cuticle — in early clubbing, the nail feels 'floating' or spongy due to increased interstitial oedema and vascularity.</p>
-            <span className="note">Earliest detectable sign &nbsp;•&nbsp; Subjective but clinically valuable</span>
-          </div>
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: 16 }}>
+        <div style={{ textAlign: 'center', marginTop: 24 }}>
           <img
             src="/images/schamroth_test.png"
             alt="Schamroth Window Test — Normal vs Positive"
-            style={{ maxHeight: 180, borderRadius: 4, border: '1px solid var(--border)' }}
+            style={{ maxHeight: 220, borderRadius: 4, border: '1px solid var(--border)' }}
           />
           <p className="image-caption">Schamroth Window Test — Normal (negative) vs. Positive (clubbing present)</p>
         </div>
@@ -339,7 +321,7 @@ export const slides = [
             <div className="card-head">Respiratory Associations</div>
             <div className="card-body">
               <ul className="bullets">
-                <li>Bronchogenic carcinoma — most prevalent malignant aetiology</li>
+                <li>Bronchogenic carcinoma — most prevalent malignant cause</li>
                 <li>Bronchiectasis — chronic suppurative airways disease</li>
                 <li>Cystic fibrosis — genetic cause with progressive lung involvement</li>
                 <li>Idiopathic pulmonary fibrosis — restrictive interstitial lung disease</li>
@@ -368,7 +350,7 @@ export const slides = [
             <li>Clubbing should be systematically assessed during hand inspection in every cardiorespiratory examination</li>
             <li>Presence warrants further workup — chest radiography, CT thorax, echocardiography, spirometry</li>
             <li>Progressive clubbing may indicate disease progression; regression may suggest treatment response</li>
-            <li>Bilateral clubbing typically reflects systemic pathology; unilateral suggests local vascular aetiology</li>
+            <li>Bilateral clubbing typically reflects systemic pathology; unilateral suggests local vascular cause</li>
           </ul>
         </div>
       </>
@@ -401,7 +383,6 @@ export const slides = [
               <ul className="bullets">
                 <li>Positive findings warrant prompt medical referral</li>
                 <li>Guides prioritisation of diagnostic investigations</li>
-                <li>Narrows the differential toward cardiopulmonary or GI aetiologies</li>
                 <li>New-onset clubbing in adults should raise suspicion for thoracic malignancy</li>
               </ul>
             </div>
@@ -411,7 +392,7 @@ export const slides = [
             <div className="card-head">Assessment & Monitoring</div>
             <div className="card-body">
               <ul className="bullets">
-                <li>Should be incorporated into routine clinical and cardiorespiratory examination</li>
+                <li>Should be incorporated into routine clinical examination</li>
                 <li>Progressive clubbing may signal disease advancement</li>
                 <li>Regression of clubbing may correlate with successful treatment</li>
                 <li>Serial assessment valuable in patients with known cardiopulmonary disease</li>
@@ -440,8 +421,9 @@ export const slides = [
           </div>
 
           <ul className="bullets" style={{ marginTop: 28 }}>
-            <li>The pathogenesis involves vascular connective tissue proliferation driven by VEGF, PDGF, and megakaryocyte-platelet bypass mechanisms</li>
-            <li>Bedside assessment using Schamroth's test, Lovibond angle, and phalangeal depth ratio provides reliable clinical detection</li>
+            <li>The pathogenesis involves vascular connective tissue proliferation driven by <strong>Vascular Endothelial Growth Factor (VEGF)</strong> and <strong>Platelet-Derived Growth Factor (PDGF)</strong> via megakaryocyte-platelet bypass mechanisms</li>
+            <li>Classified into four types: unidigital, unilateral, bilateral (generalised), and differential clubbing</li>
+            <li>Bedside assessment using Schamroth's test and Lovibond angle measurement provides reliable clinical detection</li>
             <li>Grading from fluctuation (Grade I) to drumstick deformity with HOA (Grade IV) facilitates disease staging</li>
             <li>Early recognition enables timely diagnosis, appropriate referral, and improved patient outcomes</li>
             <li><strong>Systematic nail examination should be integrated into every routine clinical assessment</strong></li>
