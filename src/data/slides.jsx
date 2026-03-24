@@ -259,41 +259,18 @@ export const slides = [
     content: (
       <>
         <div className="definition-card">
-          Educating patients about the significance of nail clubbing empowers them to participate actively in their own health monitoring and facilitates early detection of disease progression.
+          Educating patients about the significance of digital clubbing empowers them to participate actively in their own health monitoring and facilitates early detection of disease progression.
         </div>
 
-        <div className="card-grid card-grid--3" style={{ marginTop: 20 }}>
-          <div className="card">
-            <div className="card-head">Understanding the Sign</div>
-            <div className="card-body">
-              <ul className="bullets">
-                <li>Explain the significance of clubbing as a systemic sign</li>
-                <li>Educate on the association with cardiopulmonary disease</li>
-                <li>Emphasise the importance of regular medical follow-up</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-head">Self-Monitoring</div>
-            <div className="card-body">
-              <ul className="bullets">
-                <li>Teach self-monitoring of oxygen saturation levels</li>
-                <li>Maintain symptom diaries (breathlessness, fatigue)</li>
-                <li>Recognise signs of disease progression</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-head">Lifestyle & Adherence</div>
-            <div className="card-body">
-              <ul className="bullets">
-                <li>Motivate adherence to pulmonary rehab programmes</li>
-                <li>Encourage smoking cessation in relevant cases</li>
-                <li>Promote regular exercise within prescribed limits</li>
-              </ul>
-            </div>
+        <div className="card" style={{ marginTop: 20 }}>
+          <div className="card-head">Patient Education</div>
+          <div className="card-body">
+            <ul className="bullets">
+              <li>Explain the significance of clubbing as a systemic sign</li>
+              <li>Motivate adherence to pulmonary rehab programmes</li>
+              <li>Teach self-monitoring (oxygen saturation, symptom diaries)</li>
+              <li>Encourage smoking cessation in relevant cases</li>
+            </ul>
           </div>
         </div>
       </>
