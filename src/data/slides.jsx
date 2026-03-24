@@ -251,26 +251,48 @@ export const slides = [
     ),
   },
 
-  // ── 8. PATIENT EDUCATION ──
+  // ── 8. RELEVANCE TO PHYSIOTHERAPY ──
   {
     type: 'content',
-    heading: 'Patient Education',
-    notes: 'Patient education is crucial for managing conditions associated with digital clubbing. Patients should understand the significance of clubbing as a systemic sign and be empowered with self-monitoring strategies.',
+    heading: 'Relevance to Physiotherapy',
+    notes: 'Digital clubbing has direct relevance to physiotherapy practice across clinical assessment, cardiopulmonary rehabilitation, and patient education.',
     content: (
       <>
-        <div className="definition-card">
-          Educating patients about the significance of digital clubbing empowers them to participate actively in their own health monitoring and facilitates early detection of disease progression.
-        </div>
+        <div className="card-grid card-grid--3">
+          <div className="card">
+            <div className="card-head">Clinical Assessment</div>
+            <div className="card-body">
+              <ul className="bullets">
+                <li>Clubbing is a red flag: may indicate underlying cardiopulmonary pathology</li>
+                <li>Part of general hand inspection in every cardiorespiratory examination</li>
+                <li>Progressive clubbing in a patient → refer for medical investigation</li>
+                <li>Regression of clubbing may indicate response to treatment (e.g. post-surgery)</li>
+              </ul>
+            </div>
+          </div>
 
-        <div className="card" style={{ marginTop: 20 }}>
-          <div className="card-head">Patient Education</div>
-          <div className="card-body">
-            <ul className="bullets">
-              <li>Explain the significance of clubbing as a systemic sign</li>
-              <li>Motivate adherence to pulmonary rehab programmes</li>
-              <li>Teach self-monitoring (oxygen saturation, symptom diaries)</li>
-              <li>Encourage smoking cessation in relevant cases</li>
-            </ul>
+          <div className="card">
+            <div className="card-head">Cardiopulmonary Rehabilitation</div>
+            <div className="card-body">
+              <ul className="bullets">
+                <li>Patients with clubbing often have chronic lung disease (COPD, IPF, bronchiectasis)</li>
+                <li>Tailor exercise prescription based on underlying diagnosis</li>
+                <li>Monitor SpO₂ — hypoxia may be present even at rest</li>
+                <li>Airway clearance techniques crucial in bronchiectasis / CF patients</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-head">Patient Education</div>
+            <div className="card-body">
+              <ul className="bullets">
+                <li>Explain the significance of clubbing as a systemic sign</li>
+                <li>Motivate adherence to pulmonary rehab programmes</li>
+                <li>Teach self-monitoring (oxygen saturation, symptom diaries)</li>
+                <li>Encourage smoking cessation in relevant cases</li>
+              </ul>
+            </div>
           </div>
         </div>
       </>
