@@ -29,8 +29,16 @@ export const slides = [
           <li>Increased nail curvature in both longitudinal and transverse axes</li>
           <li>Sponginess (fluctuation) of the nail bed on palpation</li>
           <li>Loss of the normal 160° Lovibond angle (angle becomes ≥ 180°)</li>
-          <li>Can be unilateral or bilateral; may be hereditary or acquired</li>
         </ul>
+
+        <div style={{ textAlign: 'center', marginTop: 20 }}>
+          <img
+            src="/images/nail_clubbing_diagram.png"
+            alt="Normal nail vs Clubbed nail — anatomical comparison"
+            style={{ maxHeight: 200, borderRadius: 4, border: '1px solid var(--border)' }}
+          />
+          <p className="image-caption">Normal digit vs. Clubbed digit</p>
+        </div>
       </>
     ),
   },
