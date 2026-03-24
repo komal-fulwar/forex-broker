@@ -7,77 +7,64 @@ export const slides = [
   {
     type: 'title',
     title: 'Nail Clubbing',
-    subtitle: 'Definition  •  Mechanism  •  Types & Causes  •  Grades  •  Clinical Tests  •  Cardiopulmonary Correlation',
+    subtitle: 'A Comprehensive Review for Physiotherapy Practice',
     author: 'Presented by: [Your Name]',
     meta: 'PG Student, Physiotherapy  •  [College Name]  •  [Date]',
-    notes: 'Welcome everyone. Today I will present on Nail Clubbing — covering its definition, pathophysiological mechanisms, classification, grading, clinical assessment methods, and its significance in cardiopulmonary evaluation.',
+    notes: 'Welcome everyone. Today I will present on Nail Clubbing — covering its definition, pathophysiological mechanisms, types and causes, grading, clinical assessment methods, and the Schamroth window test in detail.',
   },
 
-
-
-  // ── 3. DEFINITION ──
+  // ── 2. INTRODUCTION & DEFINITION ──
   {
     type: 'content',
-    heading: 'Definition of Nail Clubbing',
-    notes: 'Digital clubbing is defined by obliteration of the Lovibond angle, which normally measures approximately 160 degrees. When this angle exceeds 180 degrees, clubbing is clinically evident. The phalangeal depth ratio exceeding 1.0 is the most objective diagnostic criterion.',
+    heading: 'Introduction & Definition',
+    notes: 'Digital clubbing is a clinical sign characterised by bulbous swelling of the soft tissue of the terminal phalanx. Key diagnostic features include loss of the Lovibond angle, increased nail curvature, and nail bed sponginess.',
     content: (
       <>
         <div className="definition-card">
-          Digital clubbing is a physical examination finding characterised by selective bulbous enlargement of the distal segment of a digit, owing to proliferation of connective tissue between the nail matrix and the distal phalanx.
+          <strong>Definition:</strong> Digital clubbing is a clinical sign characterised by bulbous, uniform swelling of the soft tissue of the terminal phalanx of a digit, with subsequent loss of the normal angle between the nail and the nail bed.
         </div>
 
-        <div className="card-grid card-grid--2" style={{ marginTop: 20 }}>
-          <div>
-            <div className="section-title">Morphological Changes</div>
-            <ul className="bullets">
-              <li><strong>Nail bed:</strong> Increased vascularity and oedematous interstitial tissue renders the nail bed fluctuant (spongy) on palpation</li>
-              <li><strong>Distal phalanx:</strong> Fusiform soft-tissue hypertrophy produces the characteristic bulbous enlargement</li>
-              <li><strong>Nail curvature:</strong> Increased convexity in both longitudinal and transverse axes (watch-glass deformity)</li>
-            </ul>
-          </div>
-          <div>
-            <div className="section-title">Diagnostic Criteria</div>
-            <ul className="bullets">
-              <li><strong>Lovibond angle:</strong> Normal ≈ 160° → obliterated to ≥ 180° in clubbing</li>
-              <li><strong>Phalangeal depth ratio:</strong> DPD ÷ IPD ratio exceeds 1.0 (normal &lt; 1.0) — most objective measure</li>
-              <li><strong>Schamroth sign:</strong> Loss of the diamond-shaped window when opposing nails dorsum-to-dorsum</li>
-            </ul>
-          </div>
-        </div>
+        <div className="section-title" style={{ marginTop: 20 }}>Key Features</div>
+        <ul className="bullets">
+          <li>Increased nail curvature in both longitudinal and transverse axes</li>
+          <li>Sponginess (fluctuation) of the nail bed on palpation</li>
+          <li>Loss of the normal 160° Lovibond angle (angle becomes ≥ 180°)</li>
+          <li>Can be unilateral or bilateral; may be hereditary or acquired</li>
+        </ul>
       </>
     ),
   },
 
-  // ── 4. PATHOPHYSIOLOGY ──
+  // ── 3. PATHOPHYSIOLOGY & MECHANISM ──
   {
     type: 'content',
     heading: 'Pathophysiology & Mechanism',
-    notes: 'Two principal theories explain clubbing. The VEGF-hypoxia theory proposes chronic hypoxia stimulates Vascular Endothelial Growth Factor release. The megakaryocyte-platelet bypass theory suggests that megakaryocyte fragments bypass the pulmonary capillary bed in right-to-left shunts, lodging in digital vasculature and releasing PDGF and VEGF.',
+    notes: 'The exact mechanism is not fully understood. The VEGF/hypoxia theory and the megakaryocyte/platelet bypass theory are the two most widely accepted explanations for the pathogenesis of digital clubbing.',
     content: (
       <>
-        <p className="intro-text">The precise pathogenesis remains under investigation. Two principal mechanistic theories are recognised in current literature:</p>
+        <p className="intro-text">The exact mechanism is not fully understood, but several theories have been proposed. The most widely accepted involves VEGF and megakaryocyte/platelet fragments.</p>
 
         <div className="card-grid card-grid--2">
           <div className="card">
-            <div className="card-head">VEGF (Vascular Endothelial Growth Factor) / Hypoxia Theory</div>
+            <div className="card-head">Vascular Endothelial Growth Factor (VEGF) / Hypoxia Theory</div>
             <div className="card-body">
               <ul className="bullets">
-                <li>Chronic tissue hypoxia upregulates <strong>Vascular Endothelial Growth Factor (VEGF)</strong></li>
-                <li>VEGF promotes angiogenesis and increases vascular permeability in digital tissue</li>
-                <li>Resultant connective tissue hyperplasia in the periungual region</li>
-                <li>Soft-tissue oedema and vascular proliferation produce fingertip enlargement</li>
+                <li>Chronic hypoxia → ↑ <strong>Vascular Endothelial Growth Factor (VEGF)</strong> release from distal tissues</li>
+                <li>VEGF promotes angiogenesis & vascular permeability</li>
+                <li>Connective tissue hyperplasia in the nail bed</li>
+                <li>Leads to soft-tissue swelling of the fingertip</li>
               </ul>
             </div>
           </div>
 
           <div className="card">
-            <div className="card-head">Megakaryocyte / Platelet Bypass Theory</div>
+            <div className="card-head">Megakaryocyte / Platelet Theory</div>
             <div className="card-body">
               <ul className="bullets">
-                <li>Megakaryocytes normally fragment into platelets within the pulmonary capillary bed</li>
-                <li>In right-to-left shunts or pulmonary AV malformations → fragments bypass the lungs</li>
-                <li>Intact fragments lodge in distal digital capillaries</li>
-                <li>Release <strong>Platelet-Derived Growth Factor (PDGF)</strong> and <strong>VEGF</strong> → local tissue proliferation</li>
+                <li>Megakaryocyte fragments normally fragmented in lungs</li>
+                <li>In lung/cardiac disease → fragments bypass the lungs</li>
+                <li>Lodge in distal capillaries of the digits</li>
+                <li>Release <strong>Platelet-Derived Growth Factor (PDGF)</strong> & <strong>VEGF</strong> → local tissue proliferation</li>
               </ul>
             </div>
           </div>
@@ -86,11 +73,11 @@ export const slides = [
     ),
   },
 
-  // ── 5. TYPES & CAUSES ──
+  // ── 4. TYPES & CAUSES ──
   {
     type: 'content',
     heading: 'Types & Causes of Clubbing',
-    notes: 'Clubbing is classified into four types based on the distribution of affected digits. Unidigital clubbing involves a single finger and suggests local pathology. Unilateral clubbing involves one hand and is usually due to vascular or neurological causes. Bilateral clubbing indicates systemic disease. Differential clubbing affects only the toes with normal upper limbs, classically seen in PDA with Eisenmenger syndrome.',
+    notes: 'Clubbing is classified into four types based on the distribution of affected digits. Unidigital clubbing involves a single finger and suggests local pathology. Unilateral clubbing involves one hand. Bilateral clubbing indicates systemic disease. Differential clubbing affects only the toes.',
     content: (
       <>
         <div className="card-grid card-grid--2">
@@ -160,108 +147,76 @@ export const slides = [
     ),
   },
 
-  // ── 6. KEY FEATURES ──
+  // ── 5. GRADES OF CLUBBING (images only) ──
   {
     type: 'content',
-    heading: 'Key Features of Nail Clubbing',
-    notes: 'This slide illustrates the anatomical differences between a normal digit and a clubbed digit. Note the obliterated Lovibond angle, the enlarged nail bed with increased vascularity, and the increased curvature of the nail plate in the clubbed specimen.',
+    heading: 'Grades of Clubbing',
+    notes: 'Clubbing progresses through four recognised grades. Grade 1: fluctuation and softening. Grade 2: loss of Lovibond angle. Grade 3: increased curvature in all planes. Grade 4: drumstick appearance, often associated with hypertrophic osteoarthropathy.',
     content: (
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', gap: 16 }}>
         <img
-          src="/images/nail_clubbing_diagram.png"
-          alt="Normal nail vs Clubbed nail — anatomical cross-section showing Lovibond angle, nail bed, distal phalanx"
-          style={{ maxHeight: 420, borderRadius: 6, border: '1px solid var(--border)' }}
+          src="/images/clubbing_grades.png"
+          alt="Grades I through IV of nail clubbing progression"
+          style={{ maxHeight: 480, borderRadius: 6, border: '1px solid var(--border)' }}
         />
-        <p className="image-caption" style={{ fontSize: 12, maxWidth: 500, textAlign: 'center', lineHeight: 1.5 }}>
-          Cross-sectional comparison: Normal digit (Lovibond angle ~160°) versus clubbed digit (angle ≥ 180°) demonstrating nail bed enlargement and increased nail plate curvature.
+        <p className="image-caption" style={{ fontSize: 12, maxWidth: 600, textAlign: 'center', lineHeight: 1.5 }}>
+          Progression from Grade 1 (fluctuation & softening) → Grade 2 (loss of Lovibond angle) → Grade 3 (increased curvature) → Grade 4 (drumstick appearance with HOA)
         </p>
       </div>
     ),
   },
 
-  // ── 7. GRADES / STAGES ──
+  // ── 6. CLINICAL ASSESSMENT & TESTS ──
   {
     type: 'content',
-    heading: 'Grades / Stages of Clubbing',
-    notes: 'Clubbing progresses through four recognised grades. Grade I is the earliest with nail bed fluctuation. Grade II shows obliteration of the Lovibond angle. Grade III demonstrates increased convexity in all planes. Grade IV represents the drumstick deformity and may include hypertrophic osteoarthropathy with periosteal new bone formation.',
+    heading: 'Clinical Assessment & Tests',
+    notes: 'Two primary clinical assessment methods are routinely employed. The Schamroth window test is the most widely used bedside screening tool. The Lovibond angle provides an objective angular measurement.',
     content: (
       <>
-        <div className="grades-visual">
-          <img src="/images/clubbing_grades.png" alt="Grades I through IV of nail clubbing progression" />
-          <p className="image-caption">Progression from Grade I (earliest detectable) to Grade IV (drumstick appearance with HOA)</p>
-        </div>
-
-        <div className="card-grid card-grid--4">
-          <div className="card">
-            <div className="card-head">Grade I — Fluctuation</div>
-            <div className="card-body">
-              <ul className="bullets">
-                <li>Nail bed feels spongy (fluctuant) on palpation</li>
-                <li>Loss of normal firm attachment to periosteum</li>
-                <li>Lovibond angle preserved (~160°)</li>
-                <li>Earliest clinically detectable sign</li>
-              </ul>
-            </div>
+        <div className="card-grid card-grid--2">
+          <div className="test-card">
+            <h4>1. Schamroth Window Test</h4>
+            <p>Place dorsal surfaces of opposite terminal phalanges together. Normally a diamond-shaped window is visible. In clubbing, this window is obliterated.</p>
           </div>
 
-          <div className="card">
-            <div className="card-head">Grade II — Angle Loss</div>
-            <div className="card-body">
-              <ul className="bullets">
-                <li>Lovibond angle obliterated (≥ 180°)</li>
-                <li>DPD/IPD ratio exceeds 1.0</li>
-                <li>Nail appears to 'float' on the bed</li>
-                <li>Schamroth window test becomes positive</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-head">Grade III — Curvature</div>
-            <div className="card-body">
-              <ul className="bullets">
-                <li>Accentuated convexity in all planes</li>
-                <li>Parrot-beak / watch-glass deformity</li>
-                <li>Bulbous enlargement of fingertip</li>
-                <li>Longitudinal &amp; transverse curvature ↑</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-head">Grade IV — Drumstick / HOA</div>
-            <div className="card-body">
-              <ul className="bullets">
-                <li>Entire distal phalanx hypertrophied</li>
-                <li>Classic 'drumstick' morphology</li>
-                <li>May exhibit periostitis (wrist, ankle)</li>
-                <li>Hypertrophic osteoarthropathy (HOA)</li>
-              </ul>
-            </div>
+          <div className="test-card">
+            <h4>2. Lovibond Angle / Profile Sign</h4>
+            <p>The angle between the nail plate and the proximal nail fold (hyponychial angle) is measured. Normal: &lt; 180° (approximately 160°). Clubbing: ≥ 180°.</p>
           </div>
         </div>
       </>
     ),
   },
 
-  // ── 8. CLINICAL TESTS ──
+  // ── 7. SCHAMROTH WINDOW TEST — DETAIL ──
   {
     type: 'content',
-    heading: 'Clinical Tests for Nail Clubbing',
-    notes: 'Two primary clinical assessment methods are routinely employed. The Schamroth window test is the most widely used bedside screening tool with high sensitivity and specificity. The Lovibond angle provides an objective angular measurement that can be quantified via digital photography.',
+    heading: 'Schamroth Window Test — Detail',
+    notes: 'The Schamroth window test was developed by Leo Schamroth in 1976. It is a quick, non-invasive bedside test with high sensitivity and specificity for detecting digital clubbing.',
     content: (
       <>
         <div className="card-grid card-grid--2">
-          <div className="test-card">
-            <h4>1. Schamroth's Window Test</h4>
-            <p>Oppose dorsal surfaces of corresponding terminal phalanges (nail-to-nail). In healthy individuals, a diamond-shaped window of light is visible between the nail bases; this window is obliterated in the presence of clubbing.</p>
-            <span className="note">Quick bedside screening &nbsp;•&nbsp; Sensitivity ~93% &nbsp;•&nbsp; Specificity ~95%</span>
+          <div className="card">
+            <div className="card-head">✓ Normal Finding</div>
+            <div className="card-body">
+              <ul className="bullets">
+                <li>The test was developed by <strong>Leo Schamroth in 1976</strong> after he noticed the disappearance of this window during his own episode of infective endocarditis.</li>
+                <li>When opposing terminal phalanges of the same finger are placed together (nail-to-nail), a small diamond-shaped 'window' of light is visible at the nail base.</li>
+                <li>This window exists because the Lovibond angle is &lt; 180°, creating a gap between the two nail-fold junctions.</li>
+              </ul>
+            </div>
           </div>
 
-          <div className="test-card">
-            <h4>2. Lovibond / Profile Angle</h4>
-            <p>Assess the angle between the nail plate and the proximal nail fold in lateral profile. Normal &lt; 180° (~160°). An angle ≥ 180° is diagnostic of clubbing.</p>
-            <span className="note">Objective angular measurement &nbsp;•&nbsp; Quantifiable via digital photography</span>
+          <div className="card">
+            <div className="card-head">✗ Positive (Clubbing)</div>
+            <div className="card-body">
+              <ul className="bullets">
+                <li>When opposing phalanges are placed together, the normal diamond-shaped window is <strong>ABSENT</strong> (obliterated).</li>
+                <li>This occurs because: the Lovibond angle ≥ 180° → the nail-fold areas are flush against each other → no gap remains.</li>
+                <li><strong>Interpretation:</strong> Window present → No clubbing (negative). Window absent → Clubbing present (positive).</li>
+                <li><strong>Limitation:</strong> Less reliable in early/grade 1 clubbing; combine with phalangeal depth ratio for better accuracy.</li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -277,158 +232,28 @@ export const slides = [
     ),
   },
 
-  // ── 9. CARDIOPULMONARY CORRELATION ──
-  {
-    type: 'content',
-    heading: 'Cardiopulmonary Correlation',
-    notes: 'Clubbing holds particular significance in cardiopulmonary assessment. Its presence during clinical examination warrants further investigation with chest radiography, computed tomography, echocardiography, and pulmonary function testing. Progressive clubbing may signify disease progression, while regression may correlate with treatment response.',
-    content: (
-      <>
-        <div className="definition-card">
-          Digital clubbing demonstrates a strong association with chronic cardiopulmonary disease. Its identification during clinical examination should prompt systematic investigation of the respiratory and cardiovascular systems.
-        </div>
-
-        <div className="card-grid card-grid--2">
-          <div className="card">
-            <div className="card-head">Respiratory Associations</div>
-            <div className="card-body">
-              <ul className="bullets">
-                <li>Bronchogenic carcinoma — most prevalent malignant cause</li>
-                <li>Bronchiectasis — chronic suppurative airways disease</li>
-                <li>Cystic fibrosis — genetic cause with progressive lung involvement</li>
-                <li>Idiopathic pulmonary fibrosis — restrictive interstitial lung disease</li>
-                <li>Lung abscess and empyema — chronic intrathoracic suppuration</li>
-                <li>Mesothelioma — asbestos-related pleural malignancy</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-head">Cardiac Associations</div>
-            <div className="card-body">
-              <ul className="bullets">
-                <li>Cyanotic congenital heart disease — right-to-left intracardiac shunting</li>
-                <li>Subacute bacterial endocarditis — chronic endovascular infection</li>
-                <li>Atrial myxoma — primary intracardiac neoplasm</li>
-                <li>Arteriovenous fistulae — aberrant vascular communications</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div style={{ marginTop: 18 }}>
-          <div className="section-title">Examination Relevance</div>
-          <ul className="bullets">
-            <li>Clubbing should be systematically assessed during hand inspection in every cardiorespiratory examination</li>
-            <li>Presence warrants further workup — chest radiography, CT thorax, echocardiography, spirometry</li>
-            <li>Progressive clubbing may indicate disease progression; regression may suggest treatment response</li>
-            <li>Bilateral clubbing typically reflects systemic pathology; unilateral suggests local vascular cause</li>
-          </ul>
-        </div>
-      </>
-    ),
-  },
-
-  // ── 10. CLINICAL SIGNIFICANCE ──
-  {
-    type: 'content',
-    heading: 'Clinical Significance',
-    notes: 'Early identification of digital clubbing is clinically important because it may be the presenting sign of occult malignancy or serious cardiopulmonary disease. New-onset clubbing in an adult patient should raise a high index of suspicion for bronchogenic carcinoma or other thoracic pathology.',
-    content: (
-      <>
-        <div className="card-grid card-grid--3">
-          <div className="card">
-            <div className="card-head">Early Recognition</div>
-            <div className="card-body">
-              <ul className="bullets">
-                <li>Clubbing may be the presenting sign of occult malignancy or systemic disease</li>
-                <li>Can precede overt respiratory symptoms by weeks to months</li>
-                <li>Requires no specialised equipment — a simple bedside assessment</li>
-                <li>Early identification facilitates timely diagnostic evaluation</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-head">Diagnosis & Referral</div>
-            <div className="card-body">
-              <ul className="bullets">
-                <li>Positive findings warrant prompt medical referral</li>
-                <li>Guides prioritisation of diagnostic investigations</li>
-                <li>New-onset clubbing in adults should raise suspicion for thoracic malignancy</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-head">Assessment & Monitoring</div>
-            <div className="card-body">
-              <ul className="bullets">
-                <li>Should be incorporated into routine clinical examination</li>
-                <li>Progressive clubbing may signal disease advancement</li>
-                <li>Regression of clubbing may correlate with successful treatment</li>
-                <li>Serial assessment valuable in patients with known cardiopulmonary disease</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div className="callout" style={{ marginTop: 20 }}>
-          <strong>Key Takeaway:</strong> Any clinician who identifies new or progressive digital clubbing should consider it a clinical red flag warranting systematic evaluation to exclude significant underlying pathology.
-        </div>
-      </>
-    ),
-  },
-
-  // ── 11. CONCLUSION ──
-  {
-    type: 'content',
-    heading: 'Conclusion',
-    notes: 'In summary, digital clubbing is a time-honoured clinical sign with substantial diagnostic significance. Systematic assessment should be part of every clinical evaluation. A high index of suspicion and timely referral can significantly impact patient outcomes.',
-    content: (
-      <div className="conclusion-wrapper">
-        <div className="conclusion-inner">
-          <div className="definition-card" style={{ textAlign: 'center', fontSize: 16, padding: 28 }}>
-            Digital clubbing remains a <strong>clinically significant physical examination finding</strong> that serves as an important indicator of underlying cardiopulmonary, gastrointestinal, and systemic disease.
-          </div>
-
-          <ul className="bullets" style={{ marginTop: 28 }}>
-            <li>The pathogenesis involves vascular connective tissue proliferation driven by <strong>Vascular Endothelial Growth Factor (VEGF)</strong> and <strong>Platelet-Derived Growth Factor (PDGF)</strong> via megakaryocyte-platelet bypass mechanisms</li>
-            <li>Classified into four types: unidigital, unilateral, bilateral (generalised), and differential clubbing</li>
-            <li>Bedside assessment using Schamroth's test and Lovibond angle measurement provides reliable clinical detection</li>
-            <li>Grading from fluctuation (Grade I) to drumstick deformity with HOA (Grade IV) facilitates disease staging</li>
-            <li>Early recognition enables timely diagnosis, appropriate referral, and improved patient outcomes</li>
-            <li><strong>Systematic nail examination should be integrated into every routine clinical assessment</strong></li>
-          </ul>
-        </div>
-      </div>
-    ),
-  },
-
-  // ── 12. REFERENCES ──
+  // ── 8. REFERENCES ──
   {
     type: 'content',
     heading: 'References',
     notes: 'These are standard medical and cardiopulmonary textbook references and seminal journal articles. All content has been paraphrased from established academic sources.',
     content: (
       <>
-        <div className="ref-title">Textbooks — Cardiopulmonary & General Medicine</div>
+        <div className="ref-title">Textbooks</div>
         <ol className="ref-list">
           <li>1. Hillegass, E. (2022). <em>Essentials of Cardiopulmonary Physical Therapy.</em> 5th ed. Elsevier.</li>
-          <li>2. Watchie, J. (2010). <em>Cardiovascular and Pulmonary Physical Therapy.</em> 2nd ed. Saunders.</li>
-          <li>3. Pryor, J.A. &amp; Prasad, A.S. (2008). <em>Physiotherapy for Respiratory and Cardiac Problems.</em> 4th ed. Churchill Livingstone.</li>
-          <li>4. Frownfelter, D. &amp; Dean, E. (2012). <em>Cardiovascular and Pulmonary Physical Therapy.</em> 5th ed. Mosby.</li>
-          <li>5. West, J.B. (2021). <em>West's Respiratory Physiology: The Essentials.</em> 11th ed. Wolters Kluwer.</li>
-          <li>6. Kumar, P. &amp; Clark, M. (2021). <em>Kumar &amp; Clark's Clinical Medicine.</em> 10th ed. Elsevier.</li>
+          <li>2. Watchie, J. (2010). <em>Cardiovascular and Pulmonary Physical Therapy: Evidence to Practice.</em> 2nd ed. Saunders/Elsevier.</li>
+          <li>3. Pryor, J. A., &amp; Prasad, A. S. (2008). <em>Physiotherapy for Respiratory and Cardiac Problems.</em> 4th ed. Churchill Livingstone.</li>
+          <li>4. Frownfelter, D., &amp; Dean, E. (2012). <em>Cardiovascular and Pulmonary Physical Therapy: Evidence and Practice.</em> 5th ed. Mosby/Elsevier.</li>
         </ol>
 
-        <div className="ref-title">Journal Articles & Seminal Papers</div>
+        <div className="ref-title">Journals</div>
         <ol className="ref-list secondary">
-          <li>7. Schamroth, L. (1976). Personal experience. <em>S Afr Med J</em>, 50(9), 297–300.</li>
-          <li>8. Spicknall, K.E. &amp; Zirwas, M.J. (2009). Clubbing: an update. <em>J Am Acad Dermatol</em>, 60(6), 1073–1082.</li>
-          <li>9. Dickinson, C.J. (1993). The aetiology of clubbing and HOA. <em>Eur J Clin Invest</em>, 23(6), 330–338.</li>
-          <li>10. Lovibond, J.L. (1938). Diagnosis of clubbed fingers. <em>The Lancet</em>, 231(5979), 363–364.</li>
-          <li>11. Callemeyn, J. et al. (2016). Clubbing and HOA. <em>Clin Rheumatol</em>, 35, 2575–2581.</li>
+          <li>5. Schamroth, L. (1976). Personal experience. <em>South African Medical Journal</em>, 50(9), 297–300.</li>
+          <li>6. Spicknall, K. E., &amp; Zirwas, M. J. (2009). Clubbing: an update on diagnosis, differential diagnosis, pathophysiology, and clinical relevance. <em>Journal of the American Academy of Dermatology</em>, 60(6), 1073–1082.</li>
+          <li>7. Dickinson, C. J. (1993). The aetiology of clubbing and hypertrophic osteoarthropathy. <em>European Journal of Clinical Investigation</em>, 23(6), 330–338.</li>
+          <li>8. Lovibond, J. L. (1938). Diagnosis of clubbed fingers. <em>The Lancet</em>, 231(5979), 363–364.</li>
+          <li>9. Callemeyn, J., Van Haecke, P., Peetermans, W. E., &amp; Blockmans, D. (2016). Clubbing and hypertrophic osteoarthropathy. <em>Clinical Rheumatology</em>, 35, 2575–2581.</li>
         </ol>
 
         <p style={{ marginTop: 18, fontSize: 11.5, color: 'var(--text-muted)', fontStyle: 'italic' }}>
@@ -438,7 +263,7 @@ export const slides = [
     ),
   },
 
-  // ── 13. THANK YOU ──
+  // ── 9. THANK YOU ──
   {
     type: 'thankyou',
     notes: 'Thank you for your attention. I am happy to take any questions or engage in discussion.',
