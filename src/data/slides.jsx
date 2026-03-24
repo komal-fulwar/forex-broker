@@ -6,8 +6,8 @@ export const slides = [
   // ── 1. TITLE ──
   {
     type: 'title',
-    title: 'Nail Clubbing',
-    subtitle: 'A Comprehensive Review for Physiotherapy Practice',
+    title: 'Digital Clubbing',
+    subtitle: '',
     author: 'Presented by: [Your Name]',
     meta: 'PG Student, Physiotherapy  •  [College Name]  •  [Date]',
     notes: 'Welcome everyone. Today I will present on Nail Clubbing — covering its definition, pathophysiological mechanisms, types and causes, grading, clinical assessment methods, and the Schamroth window test in detail.',
