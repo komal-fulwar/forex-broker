@@ -8,8 +8,8 @@ export const slides = [
     type: 'title',
     title: 'Digital Clubbing',
     subtitle: '',
-    author: 'Presented by: [Your Name]',
-    meta: 'PG Student, Physiotherapy  •  [College Name]  •  [Date]',
+    author: 'Presented by: Anushka Bhandare',
+
     notes: 'Welcome everyone. Today I will present on Nail Clubbing — covering its definition, pathophysiological mechanisms, types and causes, grading, clinical assessment methods, and the Schamroth window test in detail.',
   },
 
@@ -195,6 +195,14 @@ export const slides = [
           </div>
         </div>
 
+        <div style={{ textAlign: 'center', marginTop: 24 }}>
+          <img
+            src="/images/schamroth_test.png"
+            alt="Schamroth Window Test — Normal (negative) vs. Positive (clubbing present)"
+            style={{ maxHeight: 220, borderRadius: 4, border: '1px solid var(--border)' }}
+          />
+          <p className="image-caption">Schamroth Window Test — Normal (negative) vs. Positive (clubbing present)</p>
+        </div>
       </>
     ),
   },
