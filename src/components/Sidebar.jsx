@@ -27,23 +27,32 @@ const navItems = [
   },
 ]
 
-export default function Sidebar() {
+export default function Sidebar({ onClose }) {
   return (
-    <aside className="w-64 bg-surface-container-low flex flex-col border-r border-outline-variant/10 shrink-0">
+    <aside className="w-64 bg-surface-container-low flex flex-col border-r border-outline-variant/10 h-full">
       <div className="p-6 flex flex-col gap-1">
-        {/* Logo */}
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <span className="material-symbols-outlined text-on-primary text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>account_balance</span>
+        {/* Logo + Close */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+              <span className="material-symbols-outlined text-on-primary text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>account_balance</span>
+            </div>
+            <div>
+              <h1 className="text-on-background font-bold text-sm tracking-tight leading-none">BrokerPortal</h1>
+              <p className="text-secondary text-[10px] uppercase tracking-widest mt-1">Institutional Division</p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-on-background font-bold text-sm tracking-tight leading-none">BrokerPortal</h1>
-            <p className="text-secondary text-[10px] uppercase tracking-widest mt-1">Institutional Division</p>
-          </div>
+          {/* Close button on mobile */}
+          <button
+            onClick={onClose}
+            className="lg:hidden p-1.5 text-secondary hover:text-on-surface hover:bg-surface-container rounded-lg transition-colors"
+          >
+            <span className="material-symbols-outlined text-lg">close</span>
+          </button>
         </div>
 
         {/* Navigation */}
-        <nav className="flex flex-col gap-1 mt-4">
+        <nav className="flex flex-col gap-1 mt-2">
           {navItems.map(group => (
             <div key={group.section} className="mb-4">
               <p className="text-[10px] uppercase tracking-widest font-bold text-secondary/60 px-3 mb-2">{group.section}</p>
@@ -51,8 +60,9 @@ export default function Sidebar() {
                 <NavLink
                   key={item.path}
                   to={item.path}
+                  onClick={onClose}
                   className={({ isActive }) =>
-                    `flex items-center gap-3 px-3 py-2 rounded-lg transition-colors group ${
+                    `flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 group ${
                       isActive
                         ? 'bg-primary text-on-primary shadow-sm'
                         : 'text-secondary hover:bg-surface-container'

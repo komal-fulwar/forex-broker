@@ -26,19 +26,19 @@
   --color-error-container: #ffdad6;
   --color-on-error-container: #93000a;
 
-  --color-background: #f9f9ff;
+  --color-background: #f7f8fc;
   --color-on-background: #141b2c;
-  --color-surface: #f9f9ff;
+  --color-surface: #f7f8fc;
   --color-on-surface: #141b2c;
   --color-on-surface-variant: #45474c;
-  --color-surface-variant: #dbe2f9;
+  --color-surface-variant: #e8ecf4;
   --color-surface-dim: #d2daf0;
-  --color-surface-bright: #f9f9ff;
+  --color-surface-bright: #f7f8fc;
   --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #f1f3ff;
-  --color-surface-container: #e9edff;
-  --color-surface-container-high: #e0e8ff;
-  --color-surface-container-highest: #dbe2f9;
+  --color-surface-container-low: #f0f2f8;
+  --color-surface-container: #e8ecf4;
+  --color-surface-container-high: #dfe4ee;
+  --color-surface-container-highest: #d6dce8;
   --color-surface-tint: #565e71;
 
   --color-outline: #76777d;
@@ -52,6 +52,10 @@
   --font-family-label: 'Plus Jakarta Sans', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: var(--color-background);
@@ -61,13 +65,17 @@ body {
   margin: 0;
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
 .glass-header {
   backdrop-filter: blur(12px);
-  background-color: rgba(249, 249, 255, 0.8);
+  background-color: rgba(247, 248, 252, 0.8);
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -77,4 +85,56 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Decorative background elements */
+.bg-decoration {
+  position: relative;
+}
+
+.bg-decoration::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(20, 27, 44, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-decoration::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -200px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(86, 94, 113, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Mobile sidebar overlay */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 40;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Smooth content scrolling */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
