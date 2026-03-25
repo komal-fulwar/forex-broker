@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #000000;
+  --color-primary: #4361ee;
   --color-on-primary: #ffffff;
-  --color-primary-container: #141b2c;
-  --color-on-primary-container: #7c8498;
-  --color-primary-fixed: #dbe2f9;
-  --color-primary-fixed-dim: #bfc6dc;
-  --color-on-primary-fixed: #141b2c;
-  --color-on-primary-fixed-variant: #3f4759;
+  --color-primary-container: #dce1ff;
+  --color-on-primary-container: #00105c;
+  --color-primary-fixed: #dce1ff;
+  --color-primary-fixed-dim: #b5c4ff;
+  --color-on-primary-fixed: #00105c;
+  --color-on-primary-fixed-variant: #2b47b3;
 
   --color-secondary: #525f73;
   --color-on-secondary: #ffffff;
@@ -39,13 +39,18 @@
   --color-surface-container: #e8ecf4;
   --color-surface-container-high: #dfe4ee;
   --color-surface-container-highest: #d6dce8;
-  --color-surface-tint: #565e71;
+  --color-surface-tint: #4361ee;
 
   --color-outline: #76777d;
   --color-outline-variant: #c6c6cd;
   --color-inverse-surface: #293041;
   --color-inverse-on-surface: #edf0ff;
-  --color-inverse-primary: #bfc6dc;
+  --color-inverse-primary: #b5c4ff;
+
+  --color-dark: #0f1729;
+  --color-dark-card: #1a2236;
+  --color-accent: #4361ee;
+  --color-accent-soft: #4361ee20;
 
   --font-family-headline: 'Plus Jakarta Sans', sans-serif;
   --font-family-body: 'Plus Jakarta Sans', sans-serif;
@@ -87,6 +92,12 @@ body {
   scrollbar-width: none;
 }
 
+/* Frosted glass card */
+.glass-card {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+
 /* Decorative background elements */
 .bg-decoration {
   position: relative;
@@ -99,7 +110,7 @@ body {
   right: -200px;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(20, 27, 44, 0.03) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(67, 97, 238, 0.04) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -111,7 +122,7 @@ body {
   left: -200px;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(86, 94, 113, 0.03) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(67, 97, 238, 0.03) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
