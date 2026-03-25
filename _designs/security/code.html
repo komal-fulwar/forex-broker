@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Security &amp; Settings | Broker Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed": "#dbe2f9",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "surface-container": "#e9edff",
+              "tertiary-container": "#111c2d",
+              "outline-variant": "#c6c6cd",
+              "on-error-container": "#93000a",
+              "surface-container-highest": "#dbe2f9",
+              "on-tertiary-fixed": "#111c2d",
+              "on-primary-fixed-variant": "#3f4759",
+              "inverse-primary": "#bfc6dc",
+              "on-surface-variant": "#45474c",
+              "on-tertiary": "#ffffff",
+              "on-primary-container": "#7c8498",
+              "outline": "#76777d",
+              "surface-tint": "#565e71",
+              "background": "#f9f9ff",
+              "secondary-fixed": "#d6e3fb",
+              "surface-variant": "#dbe2f9",
+              "surface-dim": "#d2daf0",
+              "on-error": "#ffffff",
+              "inverse-surface": "#293041",
+              "secondary-fixed-dim": "#bac7de",
+              "inverse-on-surface": "#edf0ff",
+              "surface-container-high": "#e0e8ff",
+              "primary-fixed-dim": "#bfc6dc",
+              "primary": "#000000",
+              "tertiary-fixed-dim": "#bdc7de",
+              "surface": "#f9f9ff",
+              "on-primary-fixed": "#141b2c",
+              "secondary": "#525f73",
+              "on-background": "#141b2c",
+              "tertiary-fixed": "#d9e3fb",
+              "on-secondary-fixed": "#0f1c2d",
+              "surface-bright": "#f9f9ff",
+              "on-tertiary-fixed-variant": "#3d475a",
+              "error": "#ba1a1a",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "secondary-container": "#d6e3fb",
+              "surface-container-low": "#f1f3ff",
+              "primary-container": "#141b2c",
+              "tertiary": "#000000",
+              "on-secondary-container": "#586579",
+              "on-surface": "#141b2c",
+              "on-tertiary-container": "#7a849a",
+              "on-secondary-fixed-variant": "#3b485a"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      body { font-family: 'Plus Jakarta Sans', sans-serif; }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-header {
+        backdrop-filter: blur(12px);
+        background-color: rgba(249, 249, 255, 0.8);
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="w-64 bg-surface-container-low flex flex-col border-r border-outline-variant/10">
+<div class="p-6 flex flex-col gap-1">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-lg" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<h1 class="text-on-background font-bold text-sm tracking-tight leading-none">Broker Portal</h1>
+<p class="text-secondary text-[10px] uppercase tracking-widest mt-1">Institutional Division</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1 mt-4">
+<div class="mb-4">
+<p class="text-[10px] uppercase tracking-widest font-bold text-secondary/60 px-3 mb-2">Main</p>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+</div>
+<div class="mb-4">
+<p class="text-[10px] uppercase tracking-widest font-bold text-secondary/60 px-3 mb-2">Finance</p>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+<span class="text-sm font-medium">Accounts</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+<span class="text-sm font-medium">Deposit</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+<span class="text-sm font-medium">Withdraw</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span class="text-sm font-medium">Transactions</span>
+</a>
+</div>
+<div class="mb-4">
+<p class="text-[10px] uppercase tracking-widest font-bold text-secondary/60 px-3 mb-2">Account</p>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+<span class="text-sm font-medium">Verification</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary text-on-primary rounded-lg transition-colors group shadow-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="text-sm font-medium">Security</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">support_agent</span>
+<span class="text-sm font-medium">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</div>
+</nav>
+</div>
+<div class="mt-auto p-6">
+<div class="bg-surface-container rounded-xl p-4 border border-outline-variant/10">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full border-2 border-surface-container-lowest shadow-sm" data-alt="User Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6hRybINekuz3qmt1P_jNp97FzXDA_twVv0aWJrRyZTUs8TwQrCU5oO8D0Sx9ZLire3csjuUNZWMkh1zf1hASlFN44XomcnDAw-6P44GuLN47PgrM7n8JJ5C7D_JZwymCdcnDV-6OBt_g_VS2O8havEYXFEs_2d4xN468zWBWyLAhBBvu3WJkER-KX_Tv5IsDG4iTavV-LeTHFQwrdECVJmtMO9OqZ--14wwaWph0TejPzr4Rispnv06jfuDhj48jb4MlXqf593o0"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold text-on-background truncate">Alexander Vance</p>
+<p class="text-[10px] text-secondary truncate">Tier 3 Investor</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- TopNavBar -->
+<header class="h-16 glass-header border-b border-outline-variant/10 flex items-center justify-between px-8 z-10">
+<div class="relative w-72">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-lg">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg py-2 pl-10 pr-4 text-sm focus:ring-1 focus:ring-primary transition-all" placeholder="Search security settings..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-secondary hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface-bright"></span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-8 no-scrollbar">
+<div class="max-w-6xl mx-auto space-y-8">
+<!-- Page Header & Security Health -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="text-3xl font-bold tracking-tight text-on-background">Security &amp; Settings</h2>
+<p class="text-secondary mt-1 text-sm">Manage your institutional identity and asset protection protocols.</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/15 flex items-center gap-6">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-secondary font-bold">Security Level</span>
+<span class="text-sm font-bold text-on-background mt-0.5">Highly Protected</span>
+</div>
+<div class="flex gap-1">
+<div class="w-8 h-1.5 rounded-full bg-primary"></div>
+<div class="w-8 h-1.5 rounded-full bg-primary"></div>
+<div class="w-8 h-1.5 rounded-full bg-primary"></div>
+<div class="w-8 h-1.5 rounded-full bg-outline-variant"></div>
+</div>
+</div>
+</div>
+<!-- Bento Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Profile Information - Large Section -->
+<section class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_20px_-4px_rgba(20,27,44,0.04)] border border-outline-variant/10">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">person</span>
+<h3 class="font-bold text-lg tracking-tight">Profile Information</h3>
+</div>
+<button class="text-xs font-bold text-primary uppercase tracking-widest hover:underline">Edit Profile</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-1.5">
+<label class="text-[10px] uppercase tracking-widest font-bold text-secondary">Full Legal Name</label>
+<div class="bg-surface-container-low px-4 py-3 rounded-lg text-sm font-medium text-on-background">Alexander Vance</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-[10px] uppercase tracking-widest font-bold text-secondary">Email Address</label>
+<div class="bg-surface-container-low px-4 py-3 rounded-lg text-sm font-medium text-on-background">a.vance@institutional.capital</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-[10px] uppercase tracking-widest font-bold text-secondary">Institutional ID</label>
+<div class="bg-surface-container-low px-4 py-3 rounded-lg text-sm font-medium text-on-background">BR-992-XC-04</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-[10px] uppercase tracking-widest font-bold text-secondary">Entity Type</label>
+<div class="bg-surface-container-low px-4 py-3 rounded-lg text-sm font-medium text-on-background">Family Office / Ultra-High Net Worth</div>
+</div>
+</div>
+</section>
+<!-- 2FA - Side Section -->
+<section class="col-span-12 lg:col-span-4 bg-primary text-on-primary rounded-xl p-8 shadow-lg flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">enhanced_encryption</span>
+<h3 class="font-bold text-lg tracking-tight">Two-Factor Auth</h3>
+</div>
+<p class="text-on-primary/70 text-sm leading-relaxed mb-8">Secure your account with an extra layer of protection during high-volume withdrawals.</p>
+<div class="flex items-center justify-between bg-on-primary/10 p-4 rounded-xl backdrop-blur-sm">
+<span class="text-xs font-bold uppercase tracking-widest">Authentication</span>
+<div class="w-12 h-6 bg-on-primary rounded-full relative cursor-pointer p-1">
+<div class="w-4 h-4 bg-primary rounded-full absolute right-1"></div>
+</div>
+</div>
+</div>
+<div class="absolute -bottom-8 -right-8 opacity-10">
+<span class="material-symbols-outlined text-[160px]">shield_lock</span>
+</div>
+</section>
+<!-- Password Management - Small Section -->
+<section class="col-span-12 lg:col-span-4 bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_20px_-4px_rgba(20,27,44,0.04)] border border-outline-variant/10">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">password</span>
+<h3 class="font-bold text-lg tracking-tight">Password</h3>
+</div>
+<div class="space-y-4">
+<p class="text-secondary text-xs leading-relaxed">Last updated 14 days ago. We recommend changing your password every 90 days for institutional compliance.</p>
+<button class="w-full bg-surface-container-high py-3 rounded-lg text-xs font-bold uppercase tracking-widest text-on-background hover:bg-surface-container transition-all">Update Password</button>
+</div>
+</section>
+<!-- Trusted Devices - Medium Section -->
+<section class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_20px_-4px_rgba(20,27,44,0.04)] border border-outline-variant/10">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">devices</span>
+<h3 class="font-bold text-lg tracking-tight">Trusted Devices</h3>
+</div>
+<span class="text-[10px] font-bold bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded uppercase">3 Active</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl border border-transparent hover:border-outline-variant/20 transition-all">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-container-highest rounded-lg">
+<span class="material-symbols-outlined text-primary">laptop_mac</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-background">MacBook Pro 16" — Sonoma OS</p>
+<p class="text-[10px] text-secondary">London, UK • Current Session</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary hover:text-error cursor-pointer transition-colors">logout</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl border border-transparent hover:border-outline-variant/20 transition-all">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-container-highest rounded-lg">
+<span class="material-symbols-outlined text-primary">smartphone</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-background">iPhone 15 Pro — iOS 17</p>
+<p class="text-[10px] text-secondary">London, UK • 2 hours ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary hover:text-error cursor-pointer transition-colors">logout</span>
+</div>
+</div>
+</section>
+<!-- Notification Preferences - Bottom Section -->
+<section class="col-span-12 bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_20px_-4px_rgba(20,27,44,0.04)] border border-outline-variant/10">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<h3 class="font-bold text-lg tracking-tight">Notification Preferences</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="space-y-4">
+<h4 class="text-[10px] uppercase tracking-widest font-bold text-secondary">Security Alerts</h4>
+<div class="flex items-center justify-between py-2">
+<span class="text-sm font-medium text-on-background">Critical Logins</span>
+<div class="w-10 h-5 bg-primary rounded-full relative p-0.5">
+<div class="w-4 h-4 bg-on-primary rounded-full absolute right-0.5"></div>
+</div>
+</div>
+<div class="flex items-center justify-between py-2">
+<span class="text-sm font-medium text-on-background">Large Withdrawals</span>
+<div class="w-10 h-5 bg-primary rounded-full relative p-0.5">
+<div class="w-4 h-4 bg-on-primary rounded-full absolute right-0.5"></div>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="text-[10px] uppercase tracking-widest font-bold text-secondary">Market Updates</h4>
+<div class="flex items-center justify-between py-2">
+<span class="text-sm font-medium text-on-background">Position Liquidity</span>
+<div class="w-10 h-5 bg-primary rounded-full relative p-0.5">
+<div class="w-4 h-4 bg-on-primary rounded-full absolute right-0.5"></div>
+</div>
+</div>
+<div class="flex items-center justify-between py-2">
+<span class="text-sm font-medium text-on-background">Portfolio Daily Brief</span>
+<div class="w-10 h-5 bg-outline-variant rounded-full relative p-0.5">
+<div class="w-4 h-4 bg-on-primary rounded-full absolute left-0.5"></div>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="text-[10px] uppercase tracking-widest font-bold text-secondary">Channels</h4>
+<div class="flex items-center justify-between py-2">
+<span class="text-sm font-medium text-on-background">Push Notifications</span>
+<div class="w-10 h-5 bg-primary rounded-full relative p-0.5">
+<div class="w-4 h-4 bg-on-primary rounded-full absolute right-0.5"></div>
+</div>
+</div>
+<div class="flex items-center justify-between py-2">
+<span class="text-sm font-medium text-on-background">Encrypted Email</span>
+<div class="w-10 h-5 bg-primary rounded-full relative p-0.5">
+<div class="w-4 h-4 bg-on-primary rounded-full absolute right-0.5"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Disclaimer -->
+<div class="flex flex-col md:flex-row items-center justify-between py-8 border-t border-outline-variant/10 text-[10px] uppercase tracking-[0.2em] text-secondary font-bold">
+<span>Account Security Protocol: v4.12.0</span>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="hover:text-primary transition-colors" href="#">Audit Log</a>
+<a class="hover:text-primary transition-colors" href="#">Privacy Charter</a>
+<a class="hover:text-primary transition-colors" href="#">Export Data</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

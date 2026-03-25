@@ -1,58 +1,38 @@
-import { useState, useEffect, useCallback } from 'react'
-import Slide from './components/Slide'
-import { slides } from './data/slides'
-import './styles/presentation.css'
+import { Routes, Route } from 'react-router-dom'
+import AppLayout from './components/AppLayout'
+import Dashboard from './pages/Dashboard'
+import Accounts from './pages/Accounts'
+import Deposit from './pages/Deposit'
+import Verification from './pages/Verification'
+import Security from './pages/Security'
 
-function App() {
-  const [current, setCurrent] = useState(0)
-  const [notesVisible, setNotesVisible] = useState(false)
-  const total = slides.length
-
-  const next = useCallback(() => setCurrent(c => Math.min(c + 1, total - 1)), [total])
-  const prev = useCallback(() => setCurrent(c => Math.max(c - 1, 0)), [])
-
-  useEffect(() => {
-    const handleKey = (e) => {
-      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); next() }
-      if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev() }
-      if (e.key === 'n' || e.key === 'N') setNotesVisible(v => !v)
-      if (e.key === 'Home') setCurrent(0)
-      if (e.key === 'End') setCurrent(total - 1)
-    }
-    window.addEventListener('keydown', handleKey)
-    return () => window.removeEventListener('keydown', handleKey)
-  }, [next, prev, total])
-
-  const slideData = slides[current]
-
+export default function App() {
   return (
-    <div className="presentation">
-      <Slide data={slideData} index={current} total={total} />
-
-      {/* Navigation */}
-      <div className="nav-controls">
-        <button className="nav-btn" onClick={prev} aria-label="Previous">‹</button>
-        <span className="slide-counter">{current + 1} / {total}</span>
-        <button className="nav-btn" onClick={next} aria-label="Next">›</button>
-      </div>
-
-      {/* Speaker Notes Toggle */}
-      <button
-        className="notes-btn"
-        onClick={() => setNotesVisible(v => !v)}
-      >
-        {notesVisible ? 'Hide Notes' : 'Notes'}
-      </button>
-
-      {/* Speaker Notes Panel */}
-      {notesVisible && (
-        <div className="speaker-notes">
-          <span className="notes-label">Speaker Notes</span>
-          <p>{slideData.notes}</p>
-        </div>
-      )}
-    </div>
+    <Routes>
+      <Route element={<AppLayout />}>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/accounts" element={<Accounts />} />
+        <Route path="/deposit" element={<Deposit />} />
+        <Route path="/verification" element={<Verification />} />
+        <Route path="/security" element={<Security />} />
+        {/* Placeholder routes */}
+        <Route path="/withdraw" element={<PlaceholderPage title="Withdraw" icon="account_balance" />} />
+        <Route path="/transactions" element={<PlaceholderPage title="Transactions" icon="history" />} />
+        <Route path="/support" element={<PlaceholderPage title="Support" icon="support_agent" />} />
+        <Route path="/settings" element={<PlaceholderPage title="Settings" icon="settings" />} />
+      </Route>
+    </Routes>
   )
 }
 
-export default App
+function PlaceholderPage({ title, icon }) {
+  return (
+    <div className="max-w-6xl mx-auto flex flex-col items-center justify-center min-h-[60vh] text-center">
+      <div className="w-20 h-20 rounded-2xl bg-surface-container-high flex items-center justify-center mb-6">
+        <span className="material-symbols-outlined text-4xl text-secondary">{icon}</span>
+      </div>
+      <h2 className="text-2xl font-bold text-on-surface mb-2">{title}</h2>
+      <p className="text-secondary text-sm">This page is under development.</p>
+    </div>
+  )
+}
