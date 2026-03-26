@@ -1,105 +1,84 @@
-export default function Security() {
+import { useState, useEffect } from 'react'
+import { SecuritySkeleton } from '../components/Skeletons'
+
+export default function Security({ isEmbedded = false }) {
+  const [loading, setLoading] = useState(true)
+  useEffect(() => { const t = setTimeout(() => setLoading(false), 1200); return () => clearTimeout(t) }, [])
+
+  if (loading) return <SecuritySkeleton />
+
   return (
-    <div className="max-w-6xl mx-auto space-y-4 sm:space-y-6 md:space-y-8">
+    <div className="w-full space-y-4 sm:space-y-6 md:space-y-8 animate-fade-in">
       {/* Page Header & Security Health */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 md:gap-6">
-        <div>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-on-background">Security &amp; Settings</h2>
-          <p className="text-secondary mt-1 text-xs sm:text-sm">Manage your institutional identity and asset protection protocols.</p>
-        </div>
-        <div className="bg-white p-3 sm:p-4 rounded-xl border border-outline-variant/15 flex items-center gap-3 sm:gap-4 md:gap-6 self-start">
-          <div className="flex flex-col">
-            <span className="text-[9px] sm:text-[10px] uppercase tracking-widest text-secondary font-bold">Security Level</span>
-            <span className="text-xs sm:text-sm font-bold text-on-background mt-0.5">Highly Protected</span>
+      {!isEmbedded && (
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 md:gap-6">
+          <div>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-on-background">Security &amp; Settings</h2>
+            <p className="text-secondary mt-1 text-xs sm:text-sm">Manage your institutional identity and asset protection protocols.</p>
           </div>
-          <div className="flex gap-1">
-            <div className="w-6 sm:w-8 h-1.5 rounded-full bg-primary"></div>
-            <div className="w-6 sm:w-8 h-1.5 rounded-full bg-primary"></div>
-            <div className="w-6 sm:w-8 h-1.5 rounded-full bg-primary"></div>
-            <div className="w-6 sm:w-8 h-1.5 rounded-full bg-outline-variant"></div>
+          <div className="bg-white p-3 sm:p-4 rounded-xl border border-outline-variant/15 flex items-center gap-3 sm:gap-4 md:gap-6 self-start">
+            <div className="flex flex-col">
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-widest text-secondary font-bold">Security Level</span>
+              <span className="text-xs sm:text-sm font-bold text-on-background mt-0.5">Highly Protected</span>
+            </div>
+            <div className="flex gap-1">
+              <div className="w-6 sm:w-8 h-1.5 rounded-full bg-primary"></div>
+              <div className="w-6 sm:w-8 h-1.5 rounded-full bg-primary"></div>
+              <div className="w-6 sm:w-8 h-1.5 rounded-full bg-primary"></div>
+              <div className="w-6 sm:w-8 h-1.5 rounded-full bg-outline-variant"></div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Bento Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 md:gap-6">
-        {/* Profile Information */}
-        <section className="lg:col-span-8 bg-white rounded-xl p-4 sm:p-6 md:p-8 shadow-sm border border-outline-variant/10 relative overflow-hidden">
-          <div className="flex items-center justify-between mb-4 sm:mb-6 md:mb-8">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <span className="material-symbols-outlined text-primary text-lg sm:text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>person</span>
-              <h3 className="font-bold text-sm sm:text-base md:text-lg tracking-tight">Profile Information</h3>
-            </div>
-            <button className="text-[10px] sm:text-xs font-bold text-primary uppercase tracking-widest hover:underline">Edit Profile</button>
+        
+        {/* 2FA Card — restored frosty glass effect */}
+        <section className="lg:col-span-7 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-white/5 overflow-hidden relative min-h-[240px] sm:min-h-[280px]" style={{ background: 'linear-gradient(135deg, rgba(20,25,35,0.95), rgba(10,15,20,0.98))', backdropFilter: 'blur(20px)' }}>
+          {/* Huge Padlock Watermark SVG */}
+          <div className="absolute -bottom-10 -right-6 z-0 pointer-events-none">
+            <svg width="240" height="240" viewBox="0 0 24 24" fill="none" className="text-white opacity-[0.03]">
+              <path d="M18 8H17V6C17 3.24 14.76 1 12 1C9.24 1 7 3.24 7 6V8H6C4.9 8 4 8.9 4 10V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V10C20 8.9 19.1 8 18 8ZM9 6C9 4.34 10.34 3 12 3C13.66 3 15 4.34 15 6V8H9V6ZM18 20H6V10H18V20ZM12 17C13.1 17 14 16.1 14 15C14 13.9 13.1 13 12 13C10.9 13 10 13.9 10 15C10 16.1 10.9 17 12 17Z" fill="currentColor"/>
+              <path d="M12 13C10.9 13 10 13.9 10 15C10 16.1 10.9 17 12 17C13.1 17 14 16.1 14 15C14 13.9 13.1 13 12 13Z" fill="currentColor"/>
+            </svg>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-8 relative z-10">
-            {[
-              ['Full Legal Name', 'Alexander Vance'],
-              ['Email Address', 'a.vance@institutional.capital'],
-              ['Institutional ID', 'BR-992-XC-04'],
-              ['Entity Type', 'Family Office / Ultra-High Net Worth'],
-            ].map(([label, value]) => (
-              <div key={label} className="space-y-1 sm:space-y-1.5">
-                <label className="text-[9px] sm:text-[10px] uppercase tracking-widest font-bold text-primary/70">{label}</label>
-                <div className="bg-background px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-xs sm:text-sm font-medium text-on-background">{value}</div>
-              </div>
-            ))}
-          </div>
-          {/* Decorative icon */}
-          <div className="absolute -bottom-6 -right-6 opacity-[0.03] pointer-events-none">
-            <span className="material-symbols-outlined text-[140px] sm:text-[180px]" style={{ fontVariationSettings: "'FILL' 1" }}>person</span>
-          </div>
-        </section>
-
-        {/* 2FA Card — exact design match with padlock SVG and frosted glass */}
-        <section className="lg:col-span-4 rounded-xl shadow-lg overflow-hidden relative min-h-[240px] sm:min-h-[280px]" style={{ background: 'linear-gradient(135deg, #0f1729 0%, #1a2236 50%, #0f1729 100%)' }}>
-          <div className="relative z-10 p-4 sm:p-6 md:p-8 h-full flex flex-col justify-between">
+          
+          <div className="relative z-10 p-5 sm:p-7 md:p-9 h-full flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 md:mb-6">
-                <span className="material-symbols-outlined text-white text-lg sm:text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>enhanced_encryption</span>
-                <h3 className="font-bold text-sm sm:text-base md:text-lg tracking-tight text-white">Two-Factor Auth</h3>
+                <span className="material-symbols-outlined text-white text-lg sm:text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>lock</span>
+                <h3 className="font-bold text-base sm:text-lg md:text-xl tracking-tight text-white drop-shadow-sm">Two-Factor Auth</h3>
               </div>
-              <p className="text-white/60 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 md:mb-8 max-w-[220px]">Secure your account with an extra layer of protection during high-volume withdrawals.</p>
+              <p className="text-white/60 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 md:mb-8 max-w-[320px]">Secure your account with an extra layer of protection during high-volume withdrawals and critical settings changes.</p>
             </div>
             {/* Frosted glass authentication toggle */}
-            <div className="glass-card bg-white/[0.08] border border-white/[0.1] p-3 sm:p-4 rounded-xl flex items-center justify-between">
-              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white">Authentication</span>
-              <div className="w-11 sm:w-12 h-[22px] sm:h-6 bg-white rounded-full relative cursor-pointer p-0.5 sm:p-1">
-                <div className="w-[18px] sm:w-4 h-[18px] sm:h-4 bg-dark rounded-full absolute right-0.5 sm:right-1 top-0.5 sm:top-1"></div>
+            <div className="glass-card bg-white/[0.04] border border-white/[0.08] backdrop-blur-md p-4 rounded-xl flex items-center justify-between shadow-inner">
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white">Authentication Active</span>
+              <div className="w-11 sm:w-12 h-[22px] sm:h-6 bg-primary rounded-full relative cursor-pointer p-0.5 sm:p-1 border border-primary/50 shadow-[0_0_15px_rgba(67,97,238,0.4)]">
+                <div className="w-[18px] sm:w-4 h-[18px] sm:h-4 bg-white rounded-full absolute right-0.5 sm:right-1 top-0.5 sm:top-1 shadow-sm"></div>
               </div>
             </div>
-          </div>
-
-          {/* Exact padlock SVG decoration — matching the design */}
-          <div className="absolute -bottom-2 -right-2 sm:bottom-0 sm:right-0 pointer-events-none">
-            <svg width="180" height="220" viewBox="0 0 180 220" fill="none" className="w-[120px] h-[150px] sm:w-[150px] sm:h-[185px] md:w-[180px] md:h-[220px] opacity-[0.12]">
-              {/* Circular arc */}
-              <circle cx="90" cy="110" r="85" stroke="white" strokeWidth="1.5" fill="none" strokeDasharray="4 4" opacity="0.4" />
-              <circle cx="90" cy="110" r="70" stroke="white" strokeWidth="0.5" fill="none" opacity="0.2" />
-              {/* Padlock shackle */}
-              <path d="M60 95V75C60 55 75 40 90 40C105 40 120 55 120 75V95" stroke="white" strokeWidth="8" strokeLinecap="round" fill="none" />
-              {/* Padlock body */}
-              <rect x="48" y="90" width="84" height="70" rx="12" fill="white" />
-              {/* Keyhole */}
-              <circle cx="90" cy="118" r="10" fill="#1a2236" />
-              <rect x="87" y="122" width="6" height="18" rx="3" fill="#1a2236" />
-            </svg>
           </div>
         </section>
 
         {/* Password */}
-        <section className="lg:col-span-4 bg-white rounded-xl p-4 sm:p-6 md:p-8 shadow-sm border border-outline-variant/10 relative overflow-hidden">
-          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 md:mb-6">
-            <span className="material-symbols-outlined text-primary text-lg sm:text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>password</span>
-            <h3 className="font-bold text-sm sm:text-base md:text-lg tracking-tight">Password</h3>
+        <section className="lg:col-span-5 bg-white rounded-xl p-4 sm:p-6 md:p-8 shadow-sm border border-outline-variant/10 relative overflow-hidden flex flex-col justify-between min-h-[240px] sm:min-h-[280px]">
+          <div>
+            <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 md:mb-6">
+              <span className="material-symbols-outlined text-primary text-lg sm:text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>password</span>
+              <h3 className="font-bold text-sm sm:text-base md:text-lg tracking-tight">Password Management</h3>
+            </div>
+            <p className="text-secondary text-[11px] sm:text-xs leading-relaxed max-w-[250px] relative z-10">Last updated 14 days ago. We strongly recommend changing your password every 90 days to maintain institutional compliance standards.</p>
           </div>
-          <div className="space-y-3 sm:space-y-4 relative z-10">
-            <p className="text-secondary text-[11px] sm:text-xs leading-relaxed">Last updated 14 days ago. We recommend changing your password every 90 days for institutional compliance.</p>
-            <button className="w-full bg-primary text-white py-2.5 sm:py-3 rounded-lg text-[10px] sm:text-xs font-bold uppercase tracking-widest hover:bg-primary/90 transition-all">Update Password</button>
+          
+          <div className="relative z-10 mt-6 md:mt-0">
+             <button className="w-full bg-dark text-white py-2.5 sm:py-3 rounded-lg text-xs font-bold hover:bg-dark/90 transition-all shadow-sm">Update Password</button>
+             <button className="w-full bg-transparent text-secondary py-2.5 sm:py-3 rounded-lg text-xs font-bold hover:text-on-surface transition-all mt-2">View Login History</button>
           </div>
           {/* Decorative icon */}
           <div className="absolute -bottom-4 -right-4 opacity-[0.03] pointer-events-none">
-            <span className="material-symbols-outlined text-[100px] sm:text-[120px]" style={{ fontVariationSettings: "'FILL' 1" }}>key</span>
+            <span className="material-symbols-outlined text-[120px] sm:text-[140px]" style={{ fontVariationSettings: "'FILL' 1" }}>key</span>
           </div>
         </section>
 

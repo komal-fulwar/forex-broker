@@ -1,6 +1,14 @@
+import { useState, useEffect } from 'react'
+import { DashboardSkeleton } from '../components/Skeletons'
+
 export default function Dashboard() {
+  const [loading, setLoading] = useState(true)
+  useEffect(() => { const t = setTimeout(() => setLoading(false), 1200); return () => clearTimeout(t) }, [])
+
+  if (loading) return <DashboardSkeleton />
+
   return (
-    <div className="max-w-6xl mx-auto w-full space-y-4 sm:space-y-6 md:space-y-8">
+    <div className="w-full space-y-4 sm:space-y-6 md:space-y-8 animate-fade-in">
       {/* Hero Section */}
       <section className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-8 sm:items-end">
         <div className="flex-1">
@@ -79,7 +87,7 @@ export default function Dashboard() {
                 ))}
               </div>
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4">
-                <button className="bg-primary text-white px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-xl text-xs sm:text-sm font-bold hover:bg-primary/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+                <button className="bg-dark text-white px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-xl text-xs sm:text-sm font-bold hover:bg-dark/90 transition-all flex items-center justify-center gap-2 shadow-sm">
                   Join Now
                   <span className="material-symbols-outlined text-sm">arrow_forward</span>
                 </button>

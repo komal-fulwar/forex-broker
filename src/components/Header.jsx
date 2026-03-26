@@ -2,7 +2,7 @@ export default function Header({ searchPlaceholder = 'Search...', onMenuToggle }
   return (
     <header className="h-14 md:h-16 glass-header border-b border-outline-variant/10 flex items-center justify-between px-4 md:px-8 z-10 shrink-0">
       <div className="flex items-center gap-3">
-        {/* Mobile menu button */}
+        {/* Mobile Menu button */}
         <button
           onClick={onMenuToggle}
           className="lg:hidden p-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors -ml-1"
