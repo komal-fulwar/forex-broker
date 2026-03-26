@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { SupportSkeleton } from '../components/Skeletons'
+import { SettingsSkeleton } from '../components/Skeletons'
 
 export default function Settings() {
   const [loading, setLoading] = useState(true)
@@ -9,10 +9,10 @@ export default function Settings() {
     return () => clearTimeout(t)
   }, [])
 
-  if (loading) return <SupportSkeleton />
+  if (loading) return <SettingsSkeleton />
 
   return (
-    <div className="w-full animate-fade-in max-w-5xl mx-auto pb-16">
+    <div className="w-full animate-fade-in pb-16">
       <header className="mb-8 md:mb-12 border-b border-outline-variant/10 pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <p className="text-[10px] uppercase tracking-widest text-secondary font-bold mb-1">Account Management</p>

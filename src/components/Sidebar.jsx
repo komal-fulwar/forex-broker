@@ -5,6 +5,7 @@ const navItems = [
     section: 'Main',
     items: [
       { label: 'Dashboard', icon: 'dashboard', path: '/' },
+      { label: 'Performance', icon: 'insights', path: '/performance' },
       { label: 'IB Program', icon: 'handshake', path: '/ib-program' },
     ]
   },
@@ -31,9 +32,9 @@ const navItems = [
 export default function Sidebar({ onClose, isCollapsed, onCollapseToggle }) {
   return (
     <aside className={`${isCollapsed ? 'w-20' : 'w-64'} bg-surface-container-low flex flex-col border-r border-outline-variant/10 h-full transition-[width] duration-300 ease-in-out`}>
-      <div className={`p-6 flex flex-col gap-1 ${isCollapsed ? 'items-center px-2' : ''}`}>
+      <div className={`p-6 flex flex-col gap-1 ${isCollapsed ? 'items-center px-2' : ''} overflow-y-auto no-scrollbar flex-1`}>
         {/* Logo + Close */}
-        <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'justify-between'} mb-6 overflow-hidden`}>
+        <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'justify-between'} mb-6 shrink-0 overflow-hidden`}>
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shrink-0">
               <span className="material-symbols-outlined text-on-primary text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>account_balance</span>
@@ -75,7 +76,7 @@ export default function Sidebar({ onClose, isCollapsed, onCollapseToggle }) {
                   onClick={onClose}
                   title={isCollapsed ? item.label : undefined}
                   className={({ isActive }) =>
-                    `flex items-center ${isCollapsed ? 'justify-center p-3 mx-auto w-12 h-12' : 'gap-3 px-3 py-2'} rounded-lg transition-all duration-200 group ${
+                    `flex items-center ${isCollapsed ? 'justify-center p-3 mx-auto w-12 h-12' : 'px-4 py-2'} rounded-lg transition-all duration-200 group ${
                       isActive
                         ? 'bg-primary text-on-primary shadow-sm'
                         : 'text-secondary hover:bg-surface-container hover:text-on-surface'
@@ -84,13 +85,15 @@ export default function Sidebar({ onClose, isCollapsed, onCollapseToggle }) {
                 >
                   {({ isActive }) => (
                     <>
-                      <span
-                        className="material-symbols-outlined text-[20px] shrink-0"
-                        style={isActive ? { fontVariationSettings: "'FILL' 1" } : undefined}
-                      >
-                        {item.icon}
-                      </span>
-                      {!isCollapsed && <span className="text-sm font-medium whitespace-nowrap">{item.label}</span>}
+                      {isCollapsed ? (
+                        <span className="text-sm font-bold tracking-widest uppercase">
+                          {item.label.substring(0, 2)}
+                        </span>
+                      ) : (
+                        <span className={`text-sm tracking-tight ${isActive ? 'font-bold' : 'font-medium'}`}>
+                          {item.label}
+                        </span>
+                      )}
                     </>
                   )}
                 </NavLink>
@@ -101,7 +104,7 @@ export default function Sidebar({ onClose, isCollapsed, onCollapseToggle }) {
       </div>
 
       {/* User Profile */}
-      <div className={`mt-auto ${isCollapsed ? 'p-4 flex flex-col items-center gap-2' : 'p-6 flex flex-col gap-3'}`}>
+      <div className={`mt-auto shrink-0 border-t border-outline-variant/10 ${isCollapsed ? 'p-4 flex flex-col items-center gap-2' : 'p-6 flex flex-col gap-3'}`}>
         <div className={`bg-surface-container rounded-xl border border-outline-variant/10 ${isCollapsed ? 'p-2' : 'p-4 w-full'}`}>
           <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'gap-3'}`}>
             <div className="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-bold text-sm shrink-0">AV</div>

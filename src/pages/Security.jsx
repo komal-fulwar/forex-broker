@@ -8,7 +8,7 @@ export default function Security({ isEmbedded = false }) {
   if (loading) return <SecuritySkeleton />
 
   return (
-    <div className="w-full animate-fade-in max-w-5xl mx-auto pb-16">
+    <div className="w-full animate-fade-in pb-16">
       {/* Page Header */}
       {!isEmbedded && (
         <header className="mb-8 md:mb-12 border-b border-outline-variant/10 pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">

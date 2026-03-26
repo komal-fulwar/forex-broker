@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import AppLayout from './components/AppLayout'
 import Dashboard from './pages/Dashboard'
 import Accounts from './pages/Accounts'
+import OpenAccount from './pages/OpenAccount'
 import Deposit from './pages/Deposit'
 import Support from './pages/Support'
 import IBProgram from './pages/IBProgram'
@@ -11,6 +12,7 @@ import Transactions from './pages/Transactions'
 import Settings from './pages/Settings'
 import Verification from './pages/Verification'
 import Security from './pages/Security'
+import Performance from './pages/Performance'
 
 export default function App() {
   return (
@@ -18,8 +20,10 @@ export default function App() {
       <Route path="/auth" element={<Auth />} />
       <Route element={<AppLayout />}>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/performance" element={<Performance />} />
         <Route path="/ib-program" element={<IBProgram />} />
         <Route path="/accounts" element={<Accounts />} />
+        <Route path="/open-account" element={<OpenAccount />} />
         <Route path="/deposit" element={<Deposit />} />
         <Route path="/support" element={<Support />} />
         <Route path="/withdraw" element={<Withdraw />} />

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { SupportSkeleton } from '../components/Skeletons'
 
 const TICKETS = [
@@ -11,7 +12,7 @@ const TICKETS = [
     ]
   },
   {
-    id: 'TKT-4790', subject: 'MT5 ECN account leverage change request', category: 'Accounts', status: 'in-progress', priority: 'medium', date: '2026-03-24', lastReply: '6h ago', messages: [
+    id: 'TKT-4790', subject: 'XT ECN account leverage change request', category: 'Accounts', status: 'in-progress', priority: 'medium', date: '2026-03-24', lastReply: '6h ago', messages: [
       { from: 'client', name: 'Alexander Vance', time: 'Mar 24, 2026 · 11:00', text: 'I would like to adjust the leverage on my ECN account (#8829-4401-229) from 1:500 to 1:200 for risk management purposes.' },
       { from: 'agent', name: 'David M.', role: 'Account Operations', time: 'Mar 24, 2026 · 11:45', text: 'Understood, Mr. Vance. Leverage adjustment requests require all open positions on the account to be closed. Once confirmed, the change will take effect at the next server maintenance window (00:00 GMT).' },
       { from: 'client', name: 'Alexander Vance', time: 'Mar 24, 2026 · 15:30', text: 'All positions are now closed. Please proceed with the adjustment.' },
@@ -412,7 +413,7 @@ export default function Support() {
       </section>
 
       {/* ─── New Ticket Modal ─── */}
-      {showNewTicket && (
+      {showNewTicket && createPortal(
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-dark/20 backdrop-blur-sm p-3 sm:p-4" onClick={() => setShowNewTicket(false)}>
           <div className="bg-white shadow-lg rounded-xl w-full max-w-sm p-4 sm:p-5 md:p-6 space-y-4 sm:space-y-5 border border-outline-variant/10" onClick={e => e.stopPropagation()}>
             <div className="flex justify-between items-center border-b border-outline-variant/10 pb-3 sm:pb-4">
@@ -454,7 +455,8 @@ export default function Support() {
               <button className="flex-1 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold text-white bg-dark rounded-lg hover:bg-dark/90 transition-all">Submit Ticket</button>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   )

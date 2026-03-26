@@ -38,7 +38,7 @@ export default function AppLayout() {
           <div className="fixed top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-primary/5 blur-[120px] pointer-events-none opacity-80 z-0"></div>
           <div className="fixed bottom-[-10%] right-[-5%] w-[50%] h-[50%] rounded-full bg-blue-400/5 blur-[100px] pointer-events-none opacity-60 z-0"></div>
           
-          <div className="relative z-10 w-full transition-all duration-300">
+          <div className="w-full">
             <Outlet />
           </div>
         </div>
