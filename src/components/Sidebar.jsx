@@ -101,7 +101,7 @@ export default function Sidebar({ onClose, isCollapsed, onCollapseToggle }) {
       </div>
 
       {/* User Profile */}
-      <div className={`mt-auto ${isCollapsed ? 'p-4 flex justify-center' : 'p-6'}`}>
+      <div className={`mt-auto ${isCollapsed ? 'p-4 flex flex-col items-center gap-2' : 'p-6 flex flex-col gap-3'}`}>
         <div className={`bg-surface-container rounded-xl border border-outline-variant/10 ${isCollapsed ? 'p-2' : 'p-4 w-full'}`}>
           <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'gap-3'}`}>
             <div className="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-bold text-sm shrink-0">AV</div>
@@ -113,6 +113,15 @@ export default function Sidebar({ onClose, isCollapsed, onCollapseToggle }) {
             )}
           </div>
         </div>
+        
+        <NavLink 
+          to="/auth" 
+          className={`flex items-center text-error/80 hover:text-error hover:bg-error/10 transition-colors rounded-lg ${isCollapsed ? 'justify-center p-3 w-12 h-12 shrink-0' : 'gap-3 px-4 py-2.5 w-full'}`}
+          title="Logout"
+        >
+          <span className="material-symbols-outlined text-[20px]">logout</span>
+          {!isCollapsed && <span className="text-sm font-bold">Logout</span>}
+        </NavLink>
       </div>
     </aside>
   )
