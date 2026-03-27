@@ -24,7 +24,6 @@ export default function OpenAccount() {
   const [balance, setBalance] = useState('500') // Demo only
   const [nickname, setNickname] = useState('Standard')
   const [leverage, setLeverage] = useState('1:2000')
-  const [platform, setPlatform] = useState('MT5')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
 

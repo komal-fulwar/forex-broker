@@ -13,6 +13,7 @@ const navItems = [
     section: 'Finance',
     items: [
       { label: 'Accounts', icon: 'account_balance_wallet', path: '/accounts' },
+      { label: 'Crypto Hub', icon: 'currency_bitcoin', path: '/crypto' },
       { label: 'Deposit', icon: 'payments', path: '/deposit' },
       { label: 'Withdraw', icon: 'account_balance', path: '/withdraw' },
       { label: 'Transactions', icon: 'history', path: '/transactions' },

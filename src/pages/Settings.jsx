@@ -23,10 +23,59 @@ export default function Settings() {
         </button>
       </header>
 
-      <div className="space-y-12 divide-y divide-outline-variant/10">
+      <div className="space-y-12">
         
+        {/* Verification Steps */}
+        <div className="pt-2">
+          <h2 className="text-xl font-bold text-on-surface mb-4">Verification steps</h2>
+          
+          <div className="bg-white border border-outline-variant/15 rounded-xl shadow-sm text-[13px] divide-y divide-outline-variant/10">
+            {/* Step 1 */}
+            <div className="p-5 sm:p-6 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="w-8 h-8 rounded-full bg-slate-500 text-white flex items-center justify-center font-bold text-xs shrink-0">1</div>
+                <div>
+                  <h3 className="font-bold text-on-surface text-sm mb-0.5">Personal details</h3>
+                  <p className="text-secondary text-xs">vj••••••••••••is@gmail.com, +971 ••• 5640</p>
+                </div>
+              </div>
+              <div className="bg-[#E8F5E9] text-[#2E7D32] px-3 py-1 rounded-full text-xs font-bold leading-none shrink-0 border border-[#A5D6A7]/50">
+                Verified
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="p-5 sm:p-6 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="w-8 h-8 rounded-full bg-slate-500 text-white flex items-center justify-center font-bold text-xs shrink-0">2</div>
+                <div>
+                  <h3 className="font-bold text-on-surface text-sm mb-0.5">Identity verification</h3>
+                  <p className="text-secondary text-xs uppercase">VINAY RAMESH SABOO</p>
+                </div>
+              </div>
+              <div className="bg-[#E8F5E9] text-[#2E7D32] px-3 py-1 rounded-full text-xs font-bold leading-none shrink-0 border border-[#A5D6A7]/50">
+                Verified
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="p-5 sm:p-6 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="w-8 h-8 rounded-full bg-slate-500 text-white flex items-center justify-center font-bold text-xs shrink-0">3</div>
+                <div>
+                  <h3 className="font-bold text-on-surface text-sm mb-0.5">Residential address verification</h3>
+                  <p className="text-secondary text-xs">809, The Burjuman Business Tower, Al Mankhool-Dubai-United Arab Emirates Dubai</p>
+                </div>
+              </div>
+              <div className="bg-[#E8F5E9] text-[#2E7D32] px-3 py-1 rounded-full text-xs font-bold leading-none shrink-0 border border-[#A5D6A7]/50">
+                Verified
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Personal Information */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 pt-8 first:pt-0">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 pt-8 border-t border-outline-variant/10">
           <div className="md:col-span-4 lg:col-span-4">
             <h2 className="text-base font-bold text-on-surface mb-2">Personal Information</h2>
             <p className="text-xs text-secondary leading-relaxed">Update your photo and personal details here. This information is visible to your dedicated account manager.</p>
@@ -75,50 +124,7 @@ export default function Settings() {
           </div>
         </div>
 
-        {/* Institutional Details */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 pt-8">
-          <div className="md:col-span-4 lg:col-span-4">
-            <div className="flex items-center gap-3 mb-2">
-               <h2 className="text-base font-bold text-on-surface">Institutional Profile</h2>
-               <span className="bg-emerald-50 text-emerald-700 border border-emerald-100 px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest flex items-center gap-1">
-                 <span className="material-symbols-outlined text-[12px]">verified</span> Verified
-               </span>
-            </div>
-            <p className="text-xs text-secondary leading-relaxed">Corporate details associated with your brokerage account. Locked after initial KYC to comply with AML/CTF regulations.</p>
-          </div>
-          
-          <div className="md:col-span-8 lg:col-span-8 bg-white rounded-xl border border-outline-variant/10 shadow-sm p-6 sm:p-8">
-            <div className="space-y-6">
-              <div>
-                <label className="block text-[11px] font-bold text-secondary uppercase tracking-widest mb-2">Legal Entity Name</label>
-                <div className="w-full bg-surface-container border border-outline-variant/10 rounded-lg text-sm font-bold py-3 px-4 text-on-surface">Vance Capital Partners Ltd.</div>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-[11px] font-bold text-secondary uppercase tracking-widest mb-2">Institutional ID</label>
-                  <div className="w-full bg-surface-container border border-outline-variant/10 rounded-lg text-[13px] font-mono font-medium py-3 px-4 text-secondary">
-                    BR-992-XC-04
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-[11px] font-bold text-secondary uppercase tracking-widest mb-2">Classification</label>
-                  <div className="w-full bg-surface-container border border-outline-variant/10 rounded-lg text-sm font-medium py-3 px-4 text-secondary">
-                    Family Office
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-8 pt-6 border-t border-outline-variant/10">
-               <div className="bg-primary/5 border border-primary/10 rounded-lg p-4 flex gap-3 items-start">
-                 <span className="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">admin_panel_settings</span> 
-                 <p className="text-[11px] text-secondary leading-relaxed">
-                   To request amendments to your institutional details or change corporate beneficial ownership, please contact your dedicated account manager directly.
-                 </p>
-               </div>
-            </div>
-          </div>
-        </div>
+
 
       </div>
     </div>

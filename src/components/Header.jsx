@@ -15,16 +15,20 @@ const SEARCH_RESULTS = [
 export default function Header({ searchPlaceholder = 'Search...', onMenuToggle }) {
   const [showNotifs, setShowNotifs] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
+  const [showBalanceDropdown, setShowBalanceDropdown] = useState(false)
+  const [hideBalance, setHideBalance] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const navigate = useNavigate()
   
   const notifRef = useRef(null)
   const searchRef = useRef(null)
+  const balanceRef = useRef(null)
 
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (notifRef.current && !notifRef.current.contains(e.target)) setShowNotifs(false)
       if (searchRef.current && !searchRef.current.contains(e.target)) setShowSearch(false)
+      if (balanceRef.current && !balanceRef.current.contains(e.target)) setShowBalanceDropdown(false)
     }
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
@@ -80,11 +84,70 @@ export default function Header({ searchPlaceholder = 'Search...', onMenuToggle }
           )}
         </div>
       </div>
-      <div className="flex items-center gap-2 md:gap-4">
+      <div className="flex items-center gap-1 md:gap-3">
         {/* Mobile search */}
         <button className="sm:hidden p-2 text-secondary hover:bg-surface-container-high rounded-full transition-colors flex items-center justify-center">
-          <span className="material-symbols-outlined text-[22px]">search</span>
+          <span className="material-symbols-outlined text-[20px]">search</span>
         </button>
+
+        {/* Global Balance Dropdown */}
+        <div className="relative" ref={balanceRef}>
+          <button 
+            onClick={() => setShowBalanceDropdown(!showBalanceDropdown)}
+            className="flex items-center gap-2 px-3 py-1.5 md:py-2 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors border border-outline-variant/10 shadow-sm"
+          >
+            <span className="material-symbols-outlined text-secondary text-[18px]">account_balance_wallet</span>
+            <span className="font-bold text-on-surface text-sm">{hideBalance ? '******' : '10,045.15'} <span className="text-secondary text-xs">USD</span></span>
+          </button>
+
+          {showBalanceDropdown && (
+            <div className="absolute top-full right-0 mt-3 w-[280px] sm:w-[320px] bg-white rounded-xl shadow-2xl border border-outline-variant/15 overflow-hidden z-[100] animate-fade-in origin-top-right">
+              {/* Hide Balance Toggle */}
+              <div className="p-4 flex items-center justify-between border-b border-outline-variant/10 bg-dark/5">
+                <span className="text-sm font-medium text-on-surface">Hide balance</span>
+                <button 
+                  onClick={() => setHideBalance(!hideBalance)}
+                  className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${hideBalance ? 'bg-primary' : 'bg-secondary/30'}`}
+                >
+                  <span className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform ${hideBalance ? 'translate-x-4' : 'translate-x-1'}`} />
+                </button>
+              </div>
+
+              {/* Trading Account */}
+              <div className="p-4 border-b border-outline-variant/5 hover:bg-surface-container/30 transition-colors group">
+                <div className="mb-3">
+                  <div className="flex items-center justify-between">
+                    <p className="text-lg font-bold text-on-surface">{hideBalance ? '******' : '10,045.15'} <span className="text-sm text-secondary">USD</span></p>
+                  </div>
+                  <p className="text-sm text-secondary">Trading account</p>
+                  <div className="flex items-center gap-1 mt-0.5">
+                    <p className="text-xs text-secondary/60 font-mono">#249474882</p>
+                    <button className="text-secondary/40 hover:text-primary transition-colors"><span className="material-symbols-outlined text-[14px]">content_copy</span></button>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <button onClick={() => { setShowBalanceDropdown(false); navigate('/accounts'); }} className="flex-1 bg-surface-container hover:bg-surface-container-high text-on-surface font-medium py-2 rounded-lg text-sm transition-colors border border-outline-variant/10">Transfer</button>
+                  <button onClick={() => { setShowBalanceDropdown(false); navigate('/withdraw'); }} className="flex-1 bg-surface-container hover:bg-surface-container-high text-on-surface font-medium py-2 rounded-lg text-sm transition-colors border border-outline-variant/10">Withdraw</button>
+                </div>
+              </div>
+
+              {/* Crypto Wallet */}
+              <div className="p-4 border-b border-outline-variant/5 hover:bg-surface-container/30 transition-colors group">
+                <div className="mb-3">
+                  <div className="flex items-center justify-between">
+                    <p className="text-lg font-bold text-on-surface">{hideBalance ? '******' : '0.00'} <span className="text-sm text-secondary">USD</span></p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <p className="text-sm text-secondary">Crypto wallet</p>
+                    <span className="bg-surface-container text-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-full">8</span>
+                  </div>
+                  <p className="text-xs text-secondary/60 font-mono mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity absolute">View balances</p>
+                </div>
+                <button onClick={() => { setShowBalanceDropdown(false); navigate('/crypto'); }} className="w-full bg-surface-container hover:bg-surface-container-high text-on-surface font-medium py-2 rounded-lg text-sm transition-colors border border-outline-variant/10">Go to Wallet</button>
+              </div>
+            </div>
+          )}
+        </div>
         
         {/* Notifications */}
         <div className="relative flex items-center justify-center" ref={notifRef}>

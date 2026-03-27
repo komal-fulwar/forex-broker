@@ -8,7 +8,7 @@ const TX_DATA = [
   { id: 'TX-9981', invoiceId: '319701331972', type: 'Withdrawal', method: 'Cold Wallet (BTC)', from: 'Main Wallet', to: 'bc1q...7g9v', account: 'Main Wallet', amount: '-$12,450.00', rawAmount: -12450, currency: 'BTC', commission: '15.00', grossAmount: '12,465.00', date: 'Mar 24, 2026', time: '09:15:22', created: '24 March 2026, 09:15', executed: '24 March 2026, 09:18', status: 'Processing', rawDate: new Date('2026-03-24T09:15:22') },
   { id: 'TX-9980', invoiceId: '319701331971', type: 'Internal Transfer', method: 'Wallet to Trading', from: 'Main Wallet', to: 'XT Pro (..229)', account: 'XT Pro (..229)', amount: '+$5,000.00', rawAmount: 5000, currency: 'USD', commission: '0.00', grossAmount: '5,000.00', date: 'Mar 23, 2026', time: '18:45:10', created: '23 March 2026, 18:45', executed: '23 March 2026, 18:45', status: 'Completed', rawDate: new Date('2026-03-23T18:45:10') },
   { id: 'TX-9979', invoiceId: '319701331970', type: 'Deposit', method: 'Corporate Card **1102', from: 'Visa **1102', to: 'Main Wallet', account: 'Main Wallet', amount: '+$2,500.00', rawAmount: 2500, currency: 'USD', commission: '0.00', grossAmount: '2,500.00', date: 'Mar 21, 2026', time: '11:20:45', created: '21 March 2026, 11:20', executed: '21 March 2026, 11:21', status: 'Completed', rawDate: new Date('2026-03-21T11:20:45') },
-  { id: 'TX-9978', invoiceId: '319701331969', type: 'Withdrawal', method: 'Bank Wire Transfer', from: 'Main Wallet', to: 'JP Morgan Chase **3942', account: 'Main Wallet', amount: '-$100,000.00', rawAmount: -100000, currency: 'USD', commission: '25.00', grossAmount: '100,025.00', date: 'Mar 18, 2026', time: '10:00:12', created: '18 March 2026, 10:00', executed: '—', status: 'Rejected', rawDate: new Date('2026-03-18T10:00:12') },
+  { id: 'TX-9978', invoiceId: '319701331969', type: 'Withdrawal', method: 'Bank Wire Transfer', from: 'Main Wallet', to: 'JP Morgan Chase **3942', account: 'Main Wallet', amount: '-$100,000.00', rawAmount: -100000, currency: 'USD', commission: '25.00', grossAmount: '100,025.00', date: 'Mar 18, 2026', time: '10:00:12', created: '18 March 2026, 10:00', executed: '—', status: 'Rejected', rawDate: new Date('2026-03-18T10:00:12'), rejectionReason: 'Insufficient free margin to process this withdrawal. Please review open positions.' },
   { id: 'TX-9977', invoiceId: '319701331968', type: 'Deposit', method: 'USDT (TRC-20)', from: 'Crypto Wallet (USDT TRC20)', to: 'Main Wallet', account: 'Main Wallet', amount: '+$25,000.00', rawAmount: 25000, currency: 'USDT', commission: '0.00', grossAmount: '25,000.00', date: 'Mar 15, 2026', time: '16:40:00', created: '15 March 2026, 16:40', executed: '15 March 2026, 16:42', status: 'Completed', rawDate: new Date('2026-03-15T16:40:00') },
   { id: 'TX-9976', invoiceId: '319701331967', type: 'Fee', method: 'Inactivity Fee', from: 'XT Demo', to: 'Platform', account: 'XT Demo', amount: '-$15.00', rawAmount: -15, currency: 'USD', commission: '0.00', grossAmount: '15.00', date: 'Mar 01, 2026', time: '00:00:00', created: '01 March 2026, 00:00', executed: '01 March 2026, 00:00', status: 'Completed', rawDate: new Date('2026-03-01T00:00:00') },
 ]
@@ -161,6 +161,17 @@ function TransactionDetail({ tx, onClose }) {
           </span>
         </div>
 
+        {/* Rejection Reason (If applicable) */}
+        {tx.status === 'Rejected' && tx.rejectionReason && (
+          <div className="px-6 py-4 border-b border-outline-variant/10 bg-error/5 flex gap-3 items-start">
+            <span className="material-symbols-outlined text-error text-[18px] shrink-0 mt-0.5">info</span>
+            <div>
+              <p className="text-xs font-bold text-error mb-0.5">Transaction Rejected</p>
+              <p className="text-xs text-error/80">{tx.rejectionReason}</p>
+            </div>
+          </div>
+        )}
+
         {/* Transfer Flow */}
         <div className="px-6 py-5 border-b border-outline-variant/10">
           <div className="flex items-center justify-between gap-4">
@@ -279,6 +290,37 @@ export default function Transactions() {
 
   const activePresetLabel = DATE_PRESETS.find(p => p.id === datePreset)?.label || 'Last 30 days'
 
+  const handleExportCSV = () => {
+    if (!filtered || filtered.length === 0) return;
+    const headers = ['ID', 'Type', 'Method', 'Account', 'From', 'To', 'Amount', 'Currency', 'Commission', 'Gross Amount', 'Date', 'Time', 'Status'];
+    const csvRows = filtered.map(tx => {
+      return [
+        tx.id,
+        tx.type,
+        tx.method,
+        `"${tx.account}"`,
+        `"${tx.from || ''}"`,
+        `"${tx.to || ''}"`,
+        tx.rawAmount,
+        tx.currency,
+        tx.commission,
+        `"${tx.grossAmount}"`,
+        `"${tx.date}"`,
+        `"${tx.time}"`,
+        tx.status
+      ].join(',');
+    });
+    const csvContent = [headers.join(','), ...csvRows].join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `transactions_export_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   if (loading) return <TransactionsSkeleton />
 
   return (
@@ -294,7 +336,7 @@ export default function Transactions() {
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-on-surface">Ledger History</h1>
         </div>
         <div className="flex gap-3">
-          <button className="bg-dark text-white px-5 py-2.5 rounded-lg flex items-center justify-center gap-2 text-xs font-bold hover:bg-dark/90 transition-all shadow-sm w-full sm:w-auto">
+          <button onClick={handleExportCSV} className="bg-dark text-white px-5 py-2.5 rounded-lg flex items-center justify-center gap-2 text-xs font-bold hover:bg-dark/90 transition-all shadow-sm w-full sm:w-auto">
             <span className="material-symbols-outlined text-sm">download</span>
             Export CSV
           </button>
@@ -307,7 +349,7 @@ export default function Transactions() {
         <div className="relative">
           <button
             onClick={() => { setShowDateMenu(!showDateMenu); setShowCalendar(null) }}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shadow-sm border ${
+            className={`flex items-center gap-2 h-10 px-4 rounded-xl text-xs font-bold transition-all shadow-sm border ${
               showDateMenu ? 'bg-primary text-white border-primary' : 'bg-primary text-white border-primary hover:bg-primary/90'
             }`}
           >
@@ -372,7 +414,7 @@ export default function Transactions() {
         </div>
 
         {/* Type Filter Chips */}
-        <div className="flex items-center gap-1 bg-white border border-outline-variant/10 p-1 rounded-xl shadow-sm">
+        <div className="flex items-center gap-1 h-10 bg-white border border-outline-variant/10 p-1 rounded-xl shadow-sm">
           {[
             { id: 'all', label: 'All types' },
             { id: 'in', label: 'Deposits' },
@@ -381,7 +423,7 @@ export default function Transactions() {
             <button
               key={t.id}
               onClick={() => setTab(t.id)}
-              className={`text-[10px] sm:text-xs font-bold px-3 py-1.5 rounded-lg transition-all ${
+              className={`h-full flex items-center justify-center text-[10px] sm:text-xs font-bold px-4 rounded-lg transition-all ${
                 tab === t.id ? 'bg-dark text-white shadow-sm' : 'text-secondary hover:text-on-surface hover:bg-background'
               }`}
             >
@@ -438,70 +480,88 @@ export default function Transactions() {
         </div>
 
         {/* Ledger Rows */}
-        <div className="flex-1 overflow-y-auto">
-          {filtered.map((tx, i) => (
-            <div
-              key={tx.id}
-              onClick={() => setSelectedTx(tx)}
-              className={`flex flex-col sm:flex-row sm:items-center justify-between p-4 sm:p-5 hover:bg-primary/[0.03] transition-colors group cursor-pointer ${
-                i !== filtered.length - 1 ? 'border-b border-outline-variant/5' : ''
-              }`}
-            >
-              <div className="flex items-start sm:items-center gap-4 min-w-0">
-                <div className={`h-10 w-10 sm:h-12 sm:w-12 rounded-full flex items-center justify-center shrink-0 ${
-                  tx.rawAmount > 0 ? 'bg-emerald-50 text-emerald-600' : 'bg-surface-container-high text-on-surface-variant'
-                }`}>
-                  <span className="material-symbols-outlined text-lg sm:text-xl">
-                    {tx.rawAmount > 0 ? 'south_east' : tx.type === 'Internal Transfer' ? 'sync_alt' : 'north_west'}
-                  </span>
-                </div>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <p className="text-sm sm:text-base font-bold text-on-surface truncate">{tx.type} — {tx.method}</p>
-                    {tx.status === 'Processing' && (
-                       <span className="flex h-2 w-2 relative">
-                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                         <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                       </span>
-                    )}
+        <div className="divide-y divide-outline-variant/10 flex-1 overflow-x-auto">
+          {filtered.length > 0 ? (
+            <div className="min-w-[900px]">
+              {/* Header Row */}
+              <div className="flex items-center px-6 py-3 bg-surface-container/20 text-[10px] uppercase tracking-widest font-bold text-secondary border-b border-outline-variant/10">
+                <div className="w-[30%]">Transaction Details</div>
+                <div className="w-[20%]">Account</div>
+                <div className="w-[20%]">Date & Time</div>
+                <div className="w-[15%] text-right pr-4">Status</div>
+                <div className="w-[15%] text-right">Amount</div>
+              </div>
+
+              {/* Data Rows */}
+              {filtered.map((tx) => (
+                <div
+                  key={tx.id}
+                  onClick={() => setSelectedTx(tx)}
+                  className="flex items-center px-6 py-4 hover:bg-surface-container/30 transition-colors group cursor-pointer"
+                >
+                  {/* Transaction Details */}
+                  <div className="w-[30%] pr-4 flex items-center">
+                    <div>
+                      <p className="text-sm font-bold text-on-surface mb-0.5">{tx.type}</p>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-[10px] font-mono text-secondary bg-background px-1.5 py-0.5 rounded border border-outline-variant/10">
+                          {tx.id}
+                        </span>
+                        <span className="text-[11px] font-semibold text-secondary">{tx.method}</span>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-[10px] sm:text-xs font-medium text-secondary truncate">
-                    <span className="font-mono bg-background px-1.5 py-0.5 rounded border border-outline-variant/10 text-on-surface-variant">{tx.id}</span>
-                    <span className="mx-2">•</span>
-                    {tx.account}
-                  </p>
-                </div>
-              </div>
 
-              <div className="mt-3 sm:mt-0 flex items-center justify-between sm:justify-end gap-6 sm:gap-8 ml-14 sm:ml-0">
-                <div className="text-left sm:text-right">
-                  <p className="text-[10px] sm:text-xs font-semibold text-secondary mb-0.5">{tx.date}</p>
-                  <p className="text-[10px] font-mono text-secondary/60">{tx.time}</p>
-                </div>
-                <div className="text-right w-28 sm:w-32 flex flex-col items-end">
-                  <p className={`text-sm sm:text-base font-bold tabular-nums mb-1 ${
-                    tx.rawAmount > 0 ? 'text-emerald-600' : 'text-on-surface'
-                  }`}>{tx.amount}</p>
-                  <span className={`text-[8px] sm:text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded shadow-sm border ${
-                    tx.status === 'Completed' ? 'bg-emerald-50 border-emerald-100 text-emerald-700' :
-                    tx.status === 'Processing' ? 'bg-primary border-primary text-white' :
-                    'bg-error/10 border-error/20 text-error'
-                  }`}>
-                    {tx.status}
-                  </span>
-                </div>
+                  {/* Account Context */}
+                  <div className="w-[20%] pr-4">
+                    <p className="text-sm font-bold text-on-surface truncate mb-0.5">{tx.account}</p>
+                    <p className="text-[11px] font-semibold text-secondary truncate">
+                      {tx.rawAmount > 0 ? `From: ${tx.from}` : `To: ${tx.to}`}
+                    </p>
+                  </div>
 
-                {/* Chevron hint */}
-                <span className="material-symbols-outlined text-outline-variant/40 text-base hidden sm:block group-hover:text-primary/50 transition-colors">chevron_right</span>
-              </div>
+                  {/* Date & Time */}
+                  <div className="w-[20%] pr-4">
+                    <p className="text-sm font-bold text-on-surface mb-0.5">{tx.date}</p>
+                    <div className="flex items-center gap-1.5 text-secondary">
+                      <span className="material-symbols-outlined text-[12px]">schedule</span>
+                      <p className="text-[11px] font-mono">{tx.time}</p>
+                    </div>
+                  </div>
+
+                  {/* Status */}
+                  <div className="w-[15%] pr-4 flex justify-end">
+                    <span className={`text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-lg border flex items-center gap-1.5 ${
+                      tx.status === 'Completed' ? 'bg-emerald-50 border-emerald-100 text-emerald-700' :
+                      tx.status === 'Processing' ? 'bg-primary/[0.05] border-primary/20 text-primary' :
+                      'bg-error/10 border-error/20 text-error'
+                    }`}>
+                      {tx.status === 'Processing' && (
+                        <span className="relative flex h-1.5 w-1.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary"></span>
+                        </span>
+                      )}
+                      {tx.status}
+                    </span>
+                  </div>
+
+                  {/* Amount  */}
+                  <div className="w-[15%] text-right flex flex-col justify-center">
+                    <p className={`text-base font-bold tabular-nums tracking-tight ${
+                      tx.rawAmount > 0 ? 'text-emerald-600' : 'text-on-surface'
+                    }`}>{tx.amount}</p>
+                  </div>
+
+                </div>
+              ))}
             </div>
-          ))}
-          {filtered.length === 0 && (
-             <div className="p-12 text-center flex flex-col items-center justify-center">
+          ) : (
+            <div className="p-16 text-center flex flex-col items-center justify-center h-full">
                <span className="material-symbols-outlined text-4xl text-secondary opacity-50 mb-3">manage_search</span>
-               <p className="text-sm font-bold text-on-surface">No transactions found</p>
-               <p className="text-xs text-secondary mt-1">Try adjusting your filters or date range.</p>
-             </div>
+               <p className="text-base font-bold text-on-surface">No transactions found</p>
+               <p className="text-sm text-secondary mt-1 max-w-sm">Try adjusting your filters or date range to find what you're looking for.</p>
+            </div>
           )}
         </div>
       </section>

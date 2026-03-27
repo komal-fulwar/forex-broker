@@ -13,6 +13,7 @@ import Settings from './pages/Settings'
 import Verification from './pages/Verification'
 import Security from './pages/Security'
 import Performance from './pages/Performance'
+import CryptoWallet from './pages/CryptoWallet'
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/verification" element={<Verification />} />
         <Route path="/security" element={<Security />} />
+        <Route path="/crypto" element={<CryptoWallet />} />
       </Route>
     </Routes>
   )
