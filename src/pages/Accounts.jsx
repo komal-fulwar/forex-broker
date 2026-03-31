@@ -109,9 +109,8 @@ function AccountInfoModal({ account, onClose }) {
 
   const infoRows = [
     { label: 'Nickname', value: account.nickname },
-    { label: 'Type', value: account.name.replace('MT5 ', '').replace('MT4 ', '').replace('XT ', '') },
+    { label: 'Type', value: account.name },
     { label: 'Actual leverage', value: account.leverage },
-    { label: 'Adjust leverage', value: account.leverage },
     { label: 'Execution type', value: account.executionType, hasInfo: true },
     { label: 'Bonus funds', value: `${fmt(account.bonusFunds)} ${account.currency}` },
     { label: 'Balance', value: `${fmt(account.balance)} ${account.currency}` },
@@ -127,7 +126,6 @@ function AccountInfoModal({ account, onClose }) {
         className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-fade-in border border-outline-variant/10"
         onClick={e => e.stopPropagation()}
       >
-        {/* Header */}
         <div className="p-6 pb-4">
           <div className="flex justify-between items-start">
             <div>
@@ -140,7 +138,6 @@ function AccountInfoModal({ account, onClose }) {
           </div>
         </div>
 
-        {/* Info Rows */}
         <div className="px-6">
           {infoRows.map((row, i) => (
             <div key={row.label} className={`flex items-center justify-between py-4 ${
@@ -155,14 +152,10 @@ function AccountInfoModal({ account, onClose }) {
                 }`}>
                   {row.value}
                 </span>
-                {row.hasInfo && (
-                  <span className="material-symbols-outlined text-sm text-secondary/50 cursor-help">info</span>
-                )}
                 {row.copyable && (
                   <button
                     onClick={() => copyToClipboard(row.value, row.label)}
                     className="w-7 h-7 rounded-md hover:bg-background flex items-center justify-center transition-all border border-outline-variant/10"
-                    title={`Copy ${row.label}`}
                   >
                     <span className="material-symbols-outlined text-sm text-secondary">
                       {copied === row.label ? 'check' : 'content_copy'}
@@ -174,7 +167,6 @@ function AccountInfoModal({ account, onClose }) {
           ))}
         </div>
 
-        {/* Footer */}
         <div className="p-6 pt-4">
           <button onClick={onClose} className="w-full py-3 text-sm font-bold text-on-surface bg-background hover:bg-surface-container rounded-xl transition-all border border-outline-variant/10">
             Close
@@ -186,59 +178,221 @@ function AccountInfoModal({ account, onClose }) {
   )
 }
 
+/* ── Account Card Component ── */
+function AccountCard({ account, viewMode, openMenuId, setOpenMenuId, setInfoAccount, setActiveAction }) {
+  const isDemo = account.type === 'demo';
+  const isGrid = viewMode === 'grid';
+  
+  const handleMenuClick = () => {
+    setOpenMenuId(openMenuId === account.id ? null : account.id)
+  }
+
+  const menuButton = (
+    <div className="relative">
+      <button
+        onClick={handleMenuClick}
+        className="text-secondary hover:text-on-surface border border-transparent hover:border-outline-variant/20 transition-all h-8 w-8 sm:h-9 sm:w-9 rounded-lg hover:bg-surface-container flex items-center justify-center"
+        title="Settings"
+      >
+        <span className="material-symbols-outlined text-[20px]">more_vert</span>
+      </button>
+      {openMenuId === account.id && (
+        <AccountOptionsMenu
+          account={account}
+          onClose={() => setOpenMenuId(null)}
+          onInfoClick={(a) => setInfoAccount(a)}
+          onActionClick={(a, action) => setActiveAction({ account: a, action })}
+        />
+      )}
+    </div>
+  );
+
+  if (isGrid) {
+    return (
+      <div className="bg-white rounded-xl border border-outline-variant/15 shadow-sm hover:shadow-md transition-shadow p-5 sm:p-6 group relative">
+        <div className="flex justify-between items-start mb-6 relative z-10">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <h3 className="text-lg font-bold text-on-surface">{account.name}</h3>
+              <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${isDemo ? 'bg-surface-container-high text-on-surface-variant border border-outline-variant/10' : 'bg-emerald-50 text-emerald-700 border border-emerald-100'}`}>
+                {isDemo ? 'Demo' : 'Live'}
+              </span>
+            </div>
+            <p className="text-xs font-mono text-secondary bg-background px-2 py-0.5 rounded border border-outline-variant/10 inline-block">
+              {account.number}
+            </p>
+          </div>
+          {menuButton}
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6 relative z-10">
+          <div>
+            <p className="text-[10px] uppercase tracking-widest text-secondary font-semibold mb-0.5">{isDemo ? 'Virtual Equity' : 'Balance'}</p>
+            <p className="text-sm font-bold tabular-nums text-on-surface">{sym(account.currency)}{fmt(isDemo ? account.equity : account.balance)}</p>
+          </div>
+          {!isDemo && (
+             <>
+               <div>
+                  <p className="text-[10px] uppercase tracking-widest text-secondary font-semibold mb-0.5">Equity</p>
+                  <p className="text-sm font-bold tabular-nums text-on-surface">{sym(account.currency)}{fmt(account.equity)}</p>
+               </div>
+               <div className="col-span-2 sm:col-span-1 border-t sm:border-t-0 sm:border-l border-outline-variant/10 pt-3 sm:pt-0 sm:pl-4">
+                  <p className="text-[10px] uppercase tracking-widest text-secondary font-semibold mb-0.5">Leverage</p>
+                  <p className="text-sm font-bold text-on-surface">{account.leverage}</p>
+               </div>
+             </>
+          )}
+        </div>
+
+        <div className="flex gap-2 sm:gap-3 relative z-10">
+          {isDemo ? (
+            <button className="flex-1 py-2.5 bg-background border border-outline-variant/10 text-on-surface text-xs font-bold rounded-lg hover:bg-surface-container transition-all">Launch WebTrader</button>
+          ) : (
+            <>
+              <button className="flex-1 py-2.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-all shadow-sm">Deposit</button>
+              <button className="flex-1 py-2.5 bg-white border border-outline-variant/20 text-on-surface text-xs font-bold rounded-lg hover:bg-background transition-all shadow-sm">Withdraw</button>
+              <button className="flex-1 py-2.5 bg-white border border-outline-variant/20 text-on-surface text-xs font-bold rounded-lg hover:bg-background transition-all shadow-sm hidden sm:block">Transfer</button>
+            </>
+          )}
+        </div>
+        
+        <div className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none">
+          <span className="material-symbols-outlined absolute -right-6 -bottom-6 text-[120px] text-background opacity-[0.35] select-none z-0" style={{fontVariationSettings: "'FILL' 1"}}>
+             {isDemo ? 'science' : 'account_balance_wallet'}
+          </span>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="bg-white rounded-xl border border-outline-variant/15 shadow-sm hover:shadow-md transition-shadow p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6 relative group overflow-hidden">
+      <div className="flex items-center gap-4 w-full md:w-auto relative z-10 flex-1">
+        <div className={`hidden sm:flex h-10 w-10 shrink-0 rounded-full items-center justify-center ${isDemo ? 'bg-background' : 'bg-emerald-50 text-emerald-600'}`}>
+          <span className="material-symbols-outlined text-[20px]">{isDemo ? 'science' : 'account_balance_wallet'}</span>
+        </div>
+        <div className="flex-1 md:flex-none">
+          <div className="flex items-center justify-between md:justify-start gap-2 mb-1 w-full relative">
+            <div className="flex items-center gap-2">
+              <h3 className="text-sm sm:text-base font-bold text-on-surface">{account.name}</h3>
+              <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${isDemo ? 'bg-surface-container-high text-on-surface-variant border border-outline-variant/10' : 'bg-emerald-50 text-emerald-700 border border-emerald-100'}`}>
+                {isDemo ? 'Demo' : 'Live'}
+              </span>
+            </div>
+            <div className="md:hidden">
+              {menuButton}
+            </div>
+          </div>
+          <div className="flex items-center gap-2 text-xs text-secondary mt-0.5 sm:mt-0">
+             <span className="font-mono bg-background px-1 sm:px-1.5 py-0.5 rounded border border-outline-variant/10 text-[10px] sm:text-xs">{account.number}</span>
+             <span className="opacity-50 hidden sm:inline">•</span>
+             <span className="hidden sm:inline">{account.server}</span>
+             {!isDemo && (
+                <>
+                  <span className="opacity-50 hidden sm:inline">•</span>
+                  <span className="hidden sm:inline">{account.leverage}</span>
+                </>
+             )}
+          </div>
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between sm:w-full md:w-auto md:justify-end gap-4 md:gap-8 pt-4 border-t border-outline-variant/10 md:pt-0 md:border-t-0 relative z-10 w-full">
+        <div>
+          <p className="text-[9px] uppercase tracking-widest text-secondary font-semibold mb-0.5">{isDemo ? 'Virtual Equity' : 'Balance'}</p>
+          <p className="text-sm sm:text-base font-bold tabular-nums text-on-surface">{sym(account.currency)}{fmt(isDemo ? account.equity : account.balance)}</p>
+        </div>
+        {!isDemo && (
+          <div>
+            <p className="text-[9px] uppercase tracking-widest text-secondary font-semibold mb-0.5">Equity</p>
+            <p className="text-sm sm:text-base font-bold tabular-nums text-on-surface">{sym(account.currency)}{fmt(account.equity)}</p>
+          </div>
+        )}
+        
+        <div className="flex items-center gap-2">
+          {isDemo ? (
+            <button className="h-9 px-3 sm:px-4 bg-background border border-outline-variant/10 rounded-lg flex items-center justify-center text-on-surface text-xs font-bold hover:bg-surface-container transition-colors shrink-0">Launch</button>
+          ) : (
+            <>
+               <button className="h-9 px-3 sm:px-4 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-all shadow-sm shrink-0">Deposit</button>
+               <button className="h-9 px-3 sm:px-4 bg-white border border-outline-variant/20 text-on-surface text-xs font-bold rounded-lg hover:bg-background transition-all shadow-sm sm:flex hidden shrink-0">Withdraw</button>
+            </>
+          )}
+          <div className="hidden md:block ml-2">
+             {menuButton}
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
+          <span className="material-symbols-outlined absolute -right-6 top-1/2 -translate-y-1/2 text-[100px] text-background opacity-[0.35] select-none z-0" style={{fontVariationSettings: "'FILL' 1"}}>
+             {isDemo ? 'science' : 'account_balance_wallet'}
+          </span>
+      </div>
+    </div>
+  )
+}
+
 /* ── Main Accounts Page ── */
 export default function Accounts() {
   const [loading, setLoading] = useState(true)
   const [openMenuId, setOpenMenuId] = useState(null)
   const [infoAccount, setInfoAccount] = useState(null)
   const [activeAction, setActiveAction] = useState(null)
+  const [viewMode, setViewMode] = useState('grid')
 
-  useEffect(() => { const t = setTimeout(() => setLoading(false), 1200); return () => clearTimeout(t) }, [])
+  useEffect(() => { const t = setTimeout(() => setLoading(false), 800); return () => clearTimeout(t) }, [])
 
   const liveAccounts = useMemo(() => ACCOUNTS.filter(a => a.type === 'real'), [])
   const demoAccounts = useMemo(() => ACCOUNTS.filter(a => a.type === 'demo'), [])
 
   const totalEquityUSD = useMemo(() => {
-    return liveAccounts.reduce((acc, a) => {
-      let eq = a.equity;
-      if (a.currency === 'EUR') eq *= 1.08;
-      if (a.currency === 'GBP') eq *= 1.25;
-      return acc + eq;
-    }, 0)
+    return liveAccounts.reduce((acc, a) => acc + (a.currency === 'EUR' ? a.equity * 1.08 : a.currency === 'GBP' ? a.equity * 1.25 : a.equity), 0)
   }, [liveAccounts])
 
   const totalMarginUSD = useMemo(() => {
-    return liveAccounts.reduce((acc, a) => {
-      let m = a.margin;
-      if (a.currency === 'EUR') m *= 1.08;
-      if (a.currency === 'GBP') m *= 1.25;
-      return acc + m;
-    }, 0)
+    return liveAccounts.reduce((acc, a) => acc + (a.currency === 'EUR' ? a.margin * 1.08 : a.currency === 'GBP' ? a.margin * 1.25 : a.margin), 0)
   }, [liveAccounts])
 
   if (loading) return <AccountsSkeleton />
 
   return (
-    <div className="w-full animate-fade-in space-y-6 sm:space-y-8">
-      {/* Page Header */}
-      <header className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+    <div className="w-full animate-fade-in space-y-6 sm:space-y-8 pb-16">
+      <header className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-on-surface">Accounts &amp; Portfolios</h1>
           <p className="text-secondary mt-1 text-xs sm:text-sm">Manage your trading accounts, monitor margins, and execute fund transfers.</p>
         </div>
-        <Link to="/open-account" className="bg-primary text-white px-5 py-2.5 rounded-lg flex items-center justify-center gap-2 text-sm font-bold hover:bg-primary/90 transition-all shadow-sm w-full sm:w-auto">
-          <span className="material-symbols-outlined text-[18px]">add</span>
-          Open Account
-        </Link>
+        <div className="flex items-center gap-3 w-full md:w-auto">
+          <div className="flex bg-surface-container rounded-lg p-1 border border-outline-variant/10 shrink-0">
+            <button 
+              onClick={() => setViewMode('grid')}
+              className={`p-1.5 rounded-md flex items-center justify-center transition-all ${viewMode === 'grid' ? 'bg-white shadow-sm text-on-surface' : 'text-secondary hover:text-on-surface'}`}
+              title="Grid View"
+            >
+              <span className="material-symbols-outlined text-[18px]">grid_view</span>
+            </button>
+            <button 
+              onClick={() => setViewMode('list')}
+              className={`p-1.5 rounded-md flex items-center justify-center transition-all ${viewMode === 'list' ? 'bg-white shadow-sm text-on-surface' : 'text-secondary hover:text-on-surface'}`}
+              title="List View"
+            >
+              <span className="material-symbols-outlined text-[18px]">view_list</span>
+            </button>
+          </div>
+          <Link to="/open-account" className="bg-primary text-white px-5 py-2.5 rounded-lg flex items-center justify-center gap-2 text-sm font-bold hover:bg-primary/90 transition-all shadow-sm flex-1 md:flex-initial">
+            <span className="material-symbols-outlined text-[18px]">add</span>
+            Open Account
+          </Link>
+        </div>
       </header>
 
-      {/* Portfolio Master Overview */}
       <section className="bg-dark text-white rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-lg border border-dark/50">
         <div className="relative z-10 flex flex-col md:flex-row gap-8 md:items-center justify-between">
           <div>
             <p className="text-[10px] sm:text-xs uppercase tracking-widest text-white/50 font-bold mb-1">Total Live Equity (USD)</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight tabular-nums">${fmt(totalEquityUSD)}</h2>
-            <div className="mt-4 flex items-center gap-4">
+            <div className="mt-4 flex flex-wrap items-center gap-3 sm:gap-4">
               <span className="flex items-center gap-1.5 text-xs font-semibold bg-white/10 px-3 py-1.5 rounded-full border border-white/10 text-emerald-400">
                 <span className="material-symbols-outlined text-[14px]">trending_up</span>
                 +$2,450.00 Today
@@ -246,8 +400,8 @@ export default function Accounts() {
               <span className="text-xs font-medium text-white/60">{liveAccounts.length} Active Accounts</span>
             </div>
           </div>
-          <div className="hidden md:block w-px h-20 bg-white/10 mx-6"></div>
-          <div className="grid grid-cols-2 gap-6 sm:gap-12 md:mr-8">
+          <div className="hidden md:block w-px h-20 bg-white/10 mx-6 shrink-0"></div>
+          <div className="grid grid-cols-2 gap-6 sm:gap-12 md:mr-8 w-full md:w-auto border-t md:border-t-0 border-white/10 pt-6 md:pt-0 shrink-0">
             <div>
               <p className="text-[10px] sm:text-[11px] uppercase tracking-widest text-white/50 font-bold mb-1">Total Margin</p>
               <p className="text-xl sm:text-2xl font-bold tabular-nums">${fmt(totalMarginUSD)}</p>
@@ -262,7 +416,6 @@ export default function Accounts() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
       </section>
 
-      {/* Live Accounts Section */}
       <section>
         <div className="mb-4 sm:mb-5 flex items-center gap-3">
           <div className="h-8 w-8 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center">
@@ -271,133 +424,30 @@ export default function Accounts() {
           <h2 className="text-lg sm:text-xl font-bold text-on-surface">Live Accounts</h2>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+        <div className={viewMode === 'grid' ? 'grid grid-cols-1 lg:grid-cols-2 gap-4 xl:gap-6' : 'flex flex-col gap-4'}>
           {liveAccounts.map(account => (
-            <div key={account.id} className="bg-white rounded-xl border border-outline-variant/15 shadow-sm hover:shadow-md transition-shadow p-5 sm:p-6 group relative">
-              {/* Account Header */}
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-lg font-bold text-on-surface">{account.name}</h3>
-                    <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-100">Live</span>
-                  </div>
-                  <p className="text-xs font-mono text-secondary bg-background px-2 py-0.5 rounded border border-outline-variant/10 inline-block">{account.number}</p>
-                </div>
-                {/* Three-dot menu */}
-                <div className="relative">
-                  <button
-                    onClick={() => setOpenMenuId(openMenuId === account.id ? null : account.id)}
-                    className="text-secondary hover:text-on-surface transition-colors p-1.5 rounded-lg hover:bg-background"
-                  >
-                    <span className="material-symbols-outlined text-[20px]">more_vert</span>
-                  </button>
-                  {openMenuId === account.id && (
-                    <AccountOptionsMenu
-                      account={account}
-                      onClose={() => setOpenMenuId(null)}
-                      onInfoClick={(a) => setInfoAccount(a)}
-                      onActionClick={(a, action) => setActiveAction({ account: a, action })}
-                    />
-                  )}
-                </div>
-              </div>
-
-              {/* Financials Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
-                <div>
-                  <p className="text-[10px] uppercase tracking-widest text-secondary font-semibold mb-0.5">Balance</p>
-                  <p className="text-sm font-bold tabular-nums text-on-surface">{sym(account.currency)}{fmt(account.balance)}</p>
-                </div>
-                <div>
-                  <p className="text-[10px] uppercase tracking-widest text-secondary font-semibold mb-0.5">Equity</p>
-                  <p className="text-sm font-bold tabular-nums text-on-surface">{sym(account.currency)}{fmt(account.equity)}</p>
-                </div>
-                <div className="col-span-2 sm:col-span-1 border-t sm:border-t-0 sm:border-l border-outline-variant/10 pt-3 sm:pt-0 sm:pl-4">
-                   <p className="text-[10px] uppercase tracking-widest text-secondary font-semibold mb-0.5">Leverage</p>
-                   <p className="text-sm font-bold text-on-surface">{account.leverage}</p>
-                </div>
-              </div>
-
-              {/* Actions */}
-              <div className="flex gap-2 sm:gap-3">
-                <button className="flex-1 py-2 sm:py-2.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-all shadow-sm">Deposit</button>
-                <button className="flex-1 py-2 sm:py-2.5 bg-white border border-outline-variant/20 text-on-surface text-xs font-bold rounded-lg hover:bg-background transition-all shadow-sm">Withdraw</button>
-                <button className="flex-1 py-2 sm:py-2.5 bg-white border border-outline-variant/20 text-on-surface text-xs font-bold rounded-lg hover:bg-background transition-all shadow-sm hidden sm:block">Transfer</button>
-              </div>
-              
-              {/* Subtle watermark */}
-              <div className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none">
-                <span className="material-symbols-outlined absolute -right-6 -bottom-6 text-[120px] text-background opacity-50 select-none z-0" style={{fontVariationSettings: "'FILL' 1"}}>account_balance_wallet</span>
-              </div>
-            </div>
+            <AccountCard key={account.id} account={account} viewMode={viewMode} openMenuId={openMenuId} setOpenMenuId={setOpenMenuId} setInfoAccount={setInfoAccount} setActiveAction={setActiveAction} />
           ))}
         </div>
       </section>
 
-      {/* Demo Accounts Section */}
       <section className="pt-4">
         <div className="mb-4 sm:mb-5 flex items-center gap-3">
-          <div className="h-8 w-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
+          <div className="h-8 w-8 rounded-lg bg-primary/10 border border-primary/10 flex items-center justify-center">
             <span className="material-symbols-outlined text-primary text-[18px]">science</span>
           </div>
           <h2 className="text-lg sm:text-xl font-bold text-on-surface">Demo &amp; Practice</h2>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+        <div className={viewMode === 'grid' ? 'grid grid-cols-1 lg:grid-cols-2 gap-4 xl:gap-6' : 'flex flex-col gap-4'}>
           {demoAccounts.map(account => (
-            <div key={account.id} className="bg-white rounded-xl border border-outline-variant/15 shadow-sm hover:shadow-md transition-shadow p-5 sm:p-6 flex flex-col sm:flex-row gap-5 items-start sm:items-center justify-between">
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1">
-                  <h3 className="text-base sm:text-lg font-bold text-on-surface truncate">{account.name}</h3>
-                  <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant border border-outline-variant/10">Demo</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs sm:text-sm text-secondary">
-                  <span className="font-mono bg-background px-1.5 py-0.5 rounded border border-outline-variant/5 text-[10px]">{account.number}</span>
-                  <span>•</span>
-                  <span>{account.server}</span>
-                  <span>•</span>
-                  <span>{account.leverage}</span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-6 w-full sm:w-auto mt-4 sm:mt-0 pt-4 sm:pt-0 border-t sm:border-t-0 border-outline-variant/10">
-                <div className="text-left sm:text-right">
-                  <p className="text-[9px] uppercase tracking-widest text-secondary font-semibold mb-0.5">Virtual Equity</p>
-                  <p className="text-lg font-bold tabular-nums text-on-surface">{sym(account.currency)}{fmt(account.equity)}</p>
-                </div>
-                
-                <div className="flex gap-2">
-                   <div className="relative">
-                     <button
-                       onClick={() => setOpenMenuId(openMenuId === account.id ? null : account.id)}
-                       className="h-10 w-10 sm:h-11 sm:w-11 rounded-lg border border-outline-variant/20 flex items-center justify-center text-secondary hover:bg-background hover:text-on-surface transition-colors"
-                       title="Options"
-                     >
-                       <span className="material-symbols-outlined text-[20px]">more_vert</span>
-                     </button>
-                     {openMenuId === account.id && (
-                       <AccountOptionsMenu
-                         account={account}
-                         onClose={() => setOpenMenuId(null)}
-                         onInfoClick={(a) => setInfoAccount(a)}
-                         onActionClick={(a, action) => setActiveAction({ account: a, action })}
-                       />
-                     )}
-                   </div>
-                   <button className="h-10 px-4 sm:h-11 sm:px-5 bg-background border border-outline-variant/10 rounded-lg flex items-center justify-center text-on-surface text-xs font-bold hover:bg-surface-container transition-colors" title="Start WebTrader">
-                     Launch
-                   </button>
-                </div>
-              </div>
-            </div>
+            <AccountCard key={account.id} account={account} viewMode={viewMode} openMenuId={openMenuId} setOpenMenuId={setOpenMenuId} setInfoAccount={setInfoAccount} setActiveAction={setActiveAction} />
           ))}
         </div>
       </section>
 
-      {/* Account Information Modal */}
       {infoAccount && <AccountInfoModal account={infoAccount} onClose={() => setInfoAccount(null)} />}
       
-      {/* Action Modal for all other menu items */}
       {activeAction && (
         <ActionModal 
           account={activeAction.account} 
